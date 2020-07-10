@@ -19,10 +19,10 @@ const questions = [
 export class Questions extends Component {
   render() {
     let questionBlocks = questions.map((data) => (
-      <Question question={data.question} />
+      <Question question={data.question} answers={data.answers} />
     ));
     let answerBlocks = questions.map((data) => <div>{data.answers}</div>);
-    return <div>{questionBlocks}</div>;
+    return <div className="questions-container">{questionBlocks}</div>;
   }
 }
 
