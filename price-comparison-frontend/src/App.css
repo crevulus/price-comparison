@@ -41,3 +41,9 @@
   float: right;
   position: fixed;
 }
+
+.question {
+  background-color: white;
+  margin: 10px;
+  color: red;
+}
