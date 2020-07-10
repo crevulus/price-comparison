@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-
+/* navbar styling  */
 .navbar {
   overflow: hidden;
   display: grid;
@@ -10,6 +10,7 @@
   background-color: white;
   height: 4rem;
   padding: 1rem;
+  margin-bottom: 10px;
   box-shadow: 10px 0px 8px;
 }
 
@@ -24,4 +25,19 @@
   align-self: center;
   max-height: 3.5rem;
   max-width: 8rem;
+}
+
+/* sidebar styling */
+.sidenav {
+  height: 50em;
+  width: 21em;
+  right: 0;
+  border-radius: 5px 0 0 5px;
+  background-color: white;
+  box-shadow: -2px 0px 8px;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  float: right;
+  position: fixed;
 }
