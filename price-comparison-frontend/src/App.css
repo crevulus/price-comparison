@@ -4,16 +4,24 @@
 
 .navbar {
   overflow: hidden;
-  vertical-align: center;
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  overflow: hidden;
   background-color: white;
   height: 4rem;
   padding: 1rem;
+  box-shadow: 10px 0px 8px;
 }
 
 .back-button {
+  justify-self: center;
+  align-self: center;
+  max-height: 2em;
 }
 
 .logo {
-  max-height: 2rem;
-  max-width: 5rem;
+  justify-self: center;
+  align-self: center;
+  max-height: 3.5rem;
+  max-width: 8rem;
 }
