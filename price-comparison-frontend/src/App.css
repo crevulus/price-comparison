@@ -6,7 +6,6 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 10% auto 10%;
-  overflow: hidden;
   background-color: white;
   height: 4rem;
   padding: 1rem;
