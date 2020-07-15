@@ -1,0 +1,26 @@
+{
+  "Rent": {
+    "question": "Base Rent",
+    "answers": ["a", "b", "c"]
+  },
+  "question2": {
+    "question": "Baby don't hurt me",
+    "answers": ["a", "b", "c", "d", "e"]
+  },
+  "question3": {
+    "question": "Don't hurt me no more",
+    "answers": ["a", "b"]
+  },
+  "question4": {
+    "question": "What is love?",
+    "answers": ["a", "b", "c"]
+  },
+  "question5": {
+    "question": "Baby don't hurt me",
+    "answers": ["a", "b", "c", "d", "e"]
+  },
+  "question6": {
+    "question": "Don't hurt me no more",
+    "answers": ["a", "b"]
+  }
+}

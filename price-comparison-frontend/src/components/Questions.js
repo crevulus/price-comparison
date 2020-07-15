@@ -1,39 +1,22 @@
 import React, { Component } from "react";
 import Question from "./Question";
-
-const questions = [
-  {
-    question: "What is love?",
-    answers: ["a", "b", "c"],
-  },
-  {
-    question: "Baby don't hurt me",
-    answers: ["a", "b", "c", "d", "e"],
-  },
-  {
-    question: "Don't hurt me no more",
-    answers: ["a", "b"],
-  },
-  {
-    question: "What is love?",
-    answers: ["a", "b", "c"],
-  },
-  {
-    question: "Baby don't hurt me",
-    answers: ["a", "b", "c", "d", "e"],
-  },
-  {
-    question: "Don't hurt me no more",
-    answers: ["a", "b"],
-  },
-];
+import data from "../react-dummy_ZO_questions.json";
 
 export class Questions extends Component {
+  componentDidMount() {}
+
+  renderQuestions = () => {};
+
   render() {
-    let questionBlocks = questions.map((data) => (
-      <Question question={data.question} answers={data.answers} />
-    ));
-    let answerBlocks = questions.map((data) => <div>{data.answers}</div>);
+    const questions = JSON.parse(JSON.stringify(data));
+    let questionBlocks = Object.keys(questions).map(
+      (set) => (
+        <Question
+          question={questions[set].question}
+          answers={questions[set].answers}
+        />
+      ) // not sure why it works but I ain't questionin' it.
+    );
     return <div className="questions-container">{questionBlocks}</div>;
   }
 }
