@@ -7,6 +7,7 @@ export class SidePanel extends Component {
     super();
     this.state = {
       chart: {},
+      totalPrice: 0,
     };
     this.chartRef = React.createRef();
   }
@@ -20,26 +21,34 @@ export class SidePanel extends Component {
           {
             label: "Service costs",
             backgroundColor: "pink",
-            data: [, 175],
+            data: [],
           },
           {
             label: "Base rent",
             backgroundColor: "lightyellow",
-            data: [600, 650],
+            data: [],
           },
           {
             label: "Add ons",
             backgroundColor: "lightgreen",
-            data: [80, 120],
+            data: [],
           },
           {
             label: "Water",
             backgroundColor: "lightblue",
-            data: [30, 30],
+            data: [],
+          },
+          {
+            label: "Competitor",
+            backgroundColor: "lightgrey",
+            data: [, 800],
           },
         ],
       },
       options: {
+        legend: {
+          display: false,
+        },
         responsive: true,
         maintainAspectRatio: false,
         tooltips: {
@@ -55,9 +64,9 @@ export class SidePanel extends Component {
             {
               stacked: true,
               ticks: {
-                // Include a dollar sign in the ticks
+                // Include a dollar sign in the grid
                 callback: function (value) {
-                  return "$" + value;
+                  return "€" + value;
                 },
               },
             },
@@ -69,9 +78,20 @@ export class SidePanel extends Component {
   }
 
   updateChart = (chart) => {
-    chart.data.datasets[0].data = [100, 100];
+    chart.data.datasets[0].data = [dummyData.serviceCosts["service-price"]];
+    chart.data.datasets[1].data = [dummyData.building["20sqm-baserent"]];
+    chart.data.datasets[2].data = [
+      dummyData.tv10["tv10-price"] + dummyData.wifi10["wifi0-price"],
+    ];
+    chart.data.datasets[3].data = [dummyData.water["water-price"]];
     chart.update();
-    // console.log(chart.data.datasets);
+    let totalPrice =
+      dummyData.serviceCosts["service-price"] +
+      dummyData.building["20sqm-baserent"] +
+      dummyData.tv10["tv10-price"] +
+      dummyData.wifi10["wifi0-price"] +
+      dummyData.water["water-price"];
+    this.setState({ totalPrice: totalPrice });
   };
 
   render() {
@@ -82,11 +102,12 @@ export class SidePanel extends Component {
         </div>
         <button
           onClick={() => {
-            this.updateChart(this.state.chart);
+            this.updateChart(this.state.chart); // arrow fn so the fn isn't called on load
           }}
         >
           Update
         </button>
+        <div className="price">€{this.state.totalPrice}</div>
       </div>
     );
   }
