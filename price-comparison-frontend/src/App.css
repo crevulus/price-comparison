@@ -41,6 +41,16 @@
   position: fixed;
 }
 
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 30rem;
+  width: 20rem;
+}
+
+canvas {
+}
+
 /* questions & answers */
 .questions-container {
   padding: 1rem;

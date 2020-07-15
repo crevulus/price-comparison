@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Chart from "chart.js";
+import "../App.css";
 
 class Graph extends Component {
   constructor(props) {
     super(props);
     this.chartRef = React.createRef();
+    this.data = props.data;
   }
 
   componentDidMount() {
@@ -16,7 +18,7 @@ class Graph extends Component {
           {
             label: "Service costs",
             backgroundColor: "pink",
-            data: [110, 175],
+            data: [, 175],
           },
           {
             label: "Base rent",
@@ -29,13 +31,15 @@ class Graph extends Component {
             data: [80, 120],
           },
           {
-            label: `Waternet: /n I like children blab blabaal`,
+            label: "Water",
             backgroundColor: "lightblue",
             data: [30, 30],
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         tooltips: {
           mode: "nearest",
         },
@@ -62,15 +66,16 @@ class Graph extends Component {
   }
 
   render() {
-    const graphStyle = {
-      backgroundColor: "red",
-      position: "relative",
-      height: 50,
-      responsive: true,
-    };
+    // const graphStyle = {
+    //   backgroundColor: "red",
+    //   position: "relative",
+    //   height: 50,
+    //   width: 10,
+    //   responsive: false,
+    // };
 
     return (
-      <div class="chart-container" style={{ graphStyle }}>
+      <div class="chart-container">
         <canvas ref={this.chartRef} />
       </div>
     );
