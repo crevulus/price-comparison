@@ -13,25 +13,30 @@ export class Question extends Component {
         }),
         {}
       ),
-      dbKeys: props.answerCodes,
     };
   }
 
   createCheckboxes = () => this.props.answers.map(this.createCheckbox);
 
   createCheckbox = (option, i) => {
-    console.log(option);
     return (
       <Checkbox
         label={option}
         isSelected={this.state.checkboxes[option]}
         onCheckboxChange={this.handleCheckboxChange}
         key={option}
+        dbKey={this.props.answerCodes[i]}
+        onClick={this.handleClick}
       />
     );
   };
 
+  handleClick = (e) => {
+    console.log(e.target.value);
+  };
+
   handleCheckboxChange = (changeEvent) => {
+    console.log(changeEvent.target);
     const { name } = changeEvent.target;
 
     this.setState((prevState) => ({
