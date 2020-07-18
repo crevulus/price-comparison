@@ -1,11 +1,33 @@
 {
   "Rent": {
-    "question": "Base Rent",
-    "answers": ["a", "b", "c"]
+    "question": "Choose your studio size",
+    "answers": [
+      {
+        "answer": "32sqm",
+        "answerCode": "zo-rent-32"
+      },
+      {
+        "answer": "40sqm",
+        "answerCode": "zo-rent-40"
+      },
+      {
+        "answer": "45sqm",
+        "answerCode": "zo-rent-45"
+      }
+    ]
   },
   "question2": {
-    "question": "Baby don't hurt me",
-    "answers": ["a", "b", "c", "d", "e"]
+    "question": "Choose your amenities",
+    "answers": [
+      {
+        "answer": "30 Inch TV",
+        "answerCode": "tv-30"
+      },
+      {
+        "answer": "40 Inch TV",
+        "answerCode": "tv-40"
+      }
+    ]
   },
   "question3": {
     "question": "Don't hurt me no more",

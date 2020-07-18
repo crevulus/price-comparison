@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Checkbox from "./Checkbox";
 import "../App.css";
 
-export class TestQuestion extends Component {
+export class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,4 +77,4 @@ export class TestQuestion extends Component {
   }
 }
 
-export default TestQuestion;
+export default Question;

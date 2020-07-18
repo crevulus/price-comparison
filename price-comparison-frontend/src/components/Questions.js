@@ -9,14 +9,16 @@ export class Questions extends Component {
 
   render() {
     const questions = JSON.parse(JSON.stringify(data));
-    let questionBlocks = Object.keys(questions).map(
-      (set) => (
-        <Question
-          question={questions[set].question}
-          answers={questions[set].answers}
-        />
-      ) // not sure why it works but I ain't questionin' it.
-    );
+    console.log(questions);
+    let questionBlocks = Object.keys(questions).map((set) => {
+      const answers = [];
+      questions[set].answers.forEach((arr) => {
+        answers.push(arr.answer);
+      });
+      // console.log(answers);
+      // console.log(questions[set].question);
+      return <Question question={questions[set].question} answers={answers} />; // not sure why it works but I ain't questionin' it.
+    });
     return <div className="questions-container">{questionBlocks}</div>;
   }
 }
