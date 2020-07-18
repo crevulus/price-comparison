@@ -13,19 +13,23 @@ export class Question extends Component {
         }),
         {}
       ),
+      dbKeys: props.answerCodes,
     };
   }
 
   createCheckboxes = () => this.props.answers.map(this.createCheckbox);
 
-  createCheckbox = (option) => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
+  createCheckbox = (option, i) => {
+    console.log(option);
+    return (
+      <Checkbox
+        label={option}
+        isSelected={this.state.checkboxes[option]}
+        onCheckboxChange={this.handleCheckboxChange}
+        key={option}
+      />
+    );
+  };
 
   handleCheckboxChange = (changeEvent) => {
     const { name } = changeEvent.target;
@@ -63,6 +67,7 @@ export class Question extends Component {
   render() {
     return (
       <div className="question-block">
+        {this.props.question}
         <form onSubmit={this.handleFormSubmit}>
           {this.createCheckboxes()}
           <div>
