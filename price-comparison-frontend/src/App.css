@@ -48,7 +48,10 @@
   width: 20rem;
 }
 
-canvas {
+.price {
+  text-align: right;
+  padding-right: 1rem;
+  font-size: 2rem;
 }
 
 /* questions & answers */
@@ -58,34 +61,9 @@ canvas {
 }
 
 .question-block {
-  display: grid;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 20% auto;
   border-radius: 5px;
   box-shadow: 1px 2px 2px #333;
   background-color: white;
   margin: 10px;
   padding-bottom: 2px;
-}
-
-.question-text {
-  grid-column-start: 2;
-}
-
-.answers-list {
-  grid-column-start: 2;
-  grid-row-start: 2;
-  list-style: none;
-}
-
-.answer-and-check {
-  text-align: left;
-}
-
-.answer-checkbox {
-  float: left;
-  margin-right: 2em;
-}
-
-.answer-label {
 }

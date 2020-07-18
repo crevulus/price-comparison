@@ -49,6 +49,11 @@ export class SidePanel extends Component {
         legend: {
           display: false,
         },
+        title: {
+          display: true,
+          fontSize: 16,
+          text: "Your estimated monthly costs",
+        },
         responsive: true,
         maintainAspectRatio: false,
         tooltips: {
@@ -97,7 +102,7 @@ export class SidePanel extends Component {
   render() {
     return (
       <div className="sidenav" data={dummyData}>
-        <div class="chart-container">
+        <div className="chart-container">
           <canvas ref={this.chartRef} />
         </div>
         <button
