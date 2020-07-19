@@ -1,0 +1,38 @@
+{
+  "location": "ZO",
+  "building": {
+    "20sqm-baserent": 620,
+    "20sqm-tooltip": "I like horse meat",
+    "20sqm-explenation": "No i promise horse meat is great! Have you ever tried it its like kaenguru but just better i think its because horses like techno music more I mean not everyone likes techno but I do"
+  },
+  "water": {
+    "water-price": 10,
+    "water-tooltip": "horses like water",
+    "water-explenation": "Dont like your water bill well neither we do like paying bills but since we make some money we will also pay bills or buy pills"
+  },
+  "energy": {
+    "energy-price": 10,
+    "energy-tooltip": "Engery engery energy",
+    "energy-explenation": "Energy is what we need what drives us and so on maybe try to inerst a hyper link www.giyf.com can we open it? Not even sure if its a real link tbh"
+  },
+  "serviceCosts": {
+    "service-price": 60,
+    "service-tooltip": "Engery engery energy",
+    "service-explenation": "Energy is what we need what drives us and so on maybe try to inerst a hyper link www.giyf.com can we open it? Not even sure if its a real link tbh"
+  },
+  "tv10": {
+    "tv10-price": 5,
+    "tv10-tooltip": "Everbody likes tv or so alot I hope becuase tv is nice you know",
+    "tv10-explenation": "Everybody is kunf-fu fighting shallahaplalalalala have you seen the latest movies good for you I have as well"
+  },
+  "wifi10": {
+    "wifi0-price": 40,
+    "wifi10-tooltip": "fast wifi is what we come for best porn dl speed",
+    "wifi10-explenation": "soooo how many videos do you whach a day? 1 2 3 or 4 no matter what with fiber you can whach as much as you want when you want it "
+  },
+  "competitor": {
+    "competitor-rent": 850,
+    "competitor-tooltip": "Next best place if your not cool enough for Change=",
+    "competitor-explenation": "Blablabla we evaluated alot and yes we can tell you we like oreos but they aint our favorite candy and we pleage that tim tam tasts like shit"
+  }
+}
