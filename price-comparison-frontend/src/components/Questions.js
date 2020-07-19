@@ -18,16 +18,13 @@ export class Questions extends Component {
       questions[set].answers.forEach((arr) => {
         answerCodes.push(arr.answerCode);
       });
-      // console.log(answers);
-      // console.log(questions[set].question);
-
       return (
         <Question
-          question={questions[set].question}
+          question={questions[set].question} // not sure why it works but I ain't questionin' it.
           answers={answers}
           answerCodes={answerCodes}
         />
-      ); // not sure why it works but I ain't questionin' it.
+      );
     });
     return <div className="questions-container">{questionBlocks}</div>;
   }

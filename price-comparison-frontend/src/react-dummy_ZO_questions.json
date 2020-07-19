@@ -4,6 +4,7 @@
     "answers": [
       {
         "answer": "32sqm",
+        "url": "https://google.com",
         "answerCode": "zo-rent-32"
       },
       {
@@ -16,8 +17,8 @@
       }
     ]
   },
-  "question2": {
-    "question": "Choose your amenities",
+  "TV": {
+    "question": "Add a TV subscription",
     "answers": [
       {
         "answer": "30 Inch TV",
@@ -29,20 +30,17 @@
       }
     ]
   },
-  "question3": {
-    "question": "Don't hurt me no more",
-    "answers": ["a", "b"]
-  },
-  "question4": {
-    "question": "What is love?",
-    "answers": ["a", "b", "c"]
-  },
-  "question5": {
-    "question": "Baby don't hurt me",
-    "answers": ["a", "b", "c", "d", "e"]
-  },
-  "question6": {
-    "question": "Don't hurt me no more",
-    "answers": ["a", "b"]
+  "Wifi": {
+    "question": "Add a Wifi package",
+    "answers": [
+      {
+        "answer": "slow",
+        "answerCode": "slow-wifi"
+      },
+      {
+        "answer": "fast",
+        "answerCode": "fast-wifi"
+      }
+    ]
   }
 }
