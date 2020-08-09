@@ -1,0 +1,55 @@
+from flask import Flask,jsonify,request,render_template
+from flask_pymongo import PyMongo 
+from bson.json_util import dumps
+from pymongo import MongoClient
+from flask_cors import CORS, cross_origin
+
+app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+app.config["MONGO_URI"] = "mongodb://changey_mongoroot:[Enter password here]@127.0.0.1:27017/pricing?authSource=admin"
+app.config["MONGO_DBNAME"] = "pricing"
+mongo = PyMongo(app)
+#db = mongo.db["pricing"]
+#col = mongo.db["locations"]
+
+@app.route('/')
+@cross_origin()
+def home():
+  return jsonify ({'message': 'Look at my horse, my horse is amazing. Give it a lick! ([Mmm! It tastes just like raisins.])'})
+
+
+#Status done and working!
+#Get the list of locations
+#get /company/<name> data: {name :}
+@app.route('/company/<string:name>')
+@cross_origin()
+def get_locations(name):
+    mydoc = mongo.db["locations"].find({name:{"$exists":True}})
+    #print(dumps(mydoc))
+    return dumps(mydoc)
+  #pass
+
+#Status done and working!
+#Wip add test data so we can see changes with different calls
+# #Get location questions/ by quering specific location
+#get /company/company name: name/location: location
+@app.route('/questions/<string:name>/<string:location>')
+@cross_origin()
+def get_questions(name=None, location=None):
+    mydoc  = mongo.db["Question"].find({"Location": location})
+    return dumps(mydoc)
+
+
+#WIP current no matter qhat is send returns the same dummy data
+#Receives keys and returns pricing moduels
+@app.route('/prices', methods = ["Post"])
+@cross_origin()
+def calculate_price():
+    components = request.get_json()
+    dummy_prices  = mongo.db["prices"].find({"location": "dummy"})
+    return dumps(dummy_prices)
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0', port=1024, debug=False) 
+
