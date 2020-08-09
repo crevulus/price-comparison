@@ -26,53 +26,31 @@ export class Questions extends Component {
       });
   };
 
-  renderQuestions = () => {};
-
-  // render() {
-  //   const questions = this.state.questions;
-  //   let questionBlocks = Object.keys(questions).map((set) => {
-  //     const answers = [];
-  //     const answerCodes = [];
-  //     questions[set].answers.forEach((arr) => {
-  //       answers.push(arr.answer);
-  //     });
-  //     questions[set].answers.forEach((arr) => {
-  //       answerCodes.push(arr.answerCode);
-  //     });
-  //     return (
-  //       <Question
-  //         question={questions[set].question} // not sure why it works but I ain't questionin' it.
-  //         answers={answers}
-  //         answerCodes={answerCodes}
-  //       />
-  //     );
-  //   });
-  //   return <div className="questions-container">{questionBlocks}</div>;
-  // }
-
   render() {
-    // const questions = this.state.questions;
-    // let questionBlocks = Object.keys(questions[0]).map((set) => {
-    //   const answers = [];
-    //   const answerCodes = [];
-    //   questions[set].answers.forEach((arr) => {
-    //     answers.push(arr.answer);
-    //   });
-    //   questions[set].answers.forEach((arr) => {
-    //     answerCodes.push(arr.answerCode);
-    //   });
-    //   return (
-    //     <Question
-    //       question={questions[set].question} // not sure why it works but I ain't questionin' it.
-    //       answers={answers}
-    //       answerCodes={answerCodes}
-    //     />
-    //   );
-    // });
-    // return <div>{questionBlocks}</div>;
-    return (
-      <div>{Object.keys(this.state.questions).map((question) => question)}</div>
-    );
+    const questions = this.state.questions;
+    let questionBlocks = Object.keys(questions).map((set) => {
+      const answers = [];
+      const answerCodes = [];
+      console.log(questions[set]);
+      try {
+        questions[set].answers.forEach((arr) => {
+          answers.push(arr.answer);
+        });
+        questions[set].answers.forEach((arr) => {
+          answerCodes.push(arr.answerCode);
+        });
+        return (
+          <Question
+            question={questions[set].question} // not sure why it works but I ain't questionin' it.
+            answers={answers}
+            answerCodes={answerCodes}
+          />
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    return <div>{questionBlocks}</div>;
   }
 }
 
