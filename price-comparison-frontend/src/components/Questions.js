@@ -29,7 +29,13 @@ export class Questions extends Component {
 
   handleChildClick = (code) => {
     console.log(code);
-    this.setState({ answerCodes: [...this.state.answerCodes, code] });
+    if (this.state.answerCodes.includes(code)) {
+      const index = this.state.answerCodes.indexOf(code);
+      const newAnswerCodes = this.state.answerCodes.splice(index, 1);
+      this.setState({ answerCodes: [...this.state.answerCodes] });
+    } else {
+      this.setState({ answerCodes: [...this.state.answerCodes, code] });
+    }
   };
 
   render() {
