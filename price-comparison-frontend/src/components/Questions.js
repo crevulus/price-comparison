@@ -7,6 +7,7 @@ export class Questions extends Component {
   state = {
     questions: "",
     questionBlocks: "",
+    answerCodes: [],
   };
 
   componentWillMount = () => {
@@ -24,6 +25,11 @@ export class Questions extends Component {
           console.log(this.state.questions)
         );
       });
+  };
+
+  handleChildClick = (code) => {
+    console.log(code);
+    this.setState({ answerCodes: [...this.state.answerCodes, code] });
   };
 
   render() {
@@ -44,13 +50,14 @@ export class Questions extends Component {
             question={questions[set].question} // not sure why it works but I ain't questionin' it.
             answers={answers}
             answerCodes={answerCodes}
+            onChildClick={this.handleChildClick}
           />
         );
       } catch (error) {
         console.log(error);
       }
     });
-    return <div>{questionBlocks}</div>;
+    return <div className="questions-container">{questionBlocks}</div>;
   }
 }
 

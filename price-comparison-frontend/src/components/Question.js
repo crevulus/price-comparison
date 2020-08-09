@@ -13,7 +13,9 @@ export class Question extends Component {
         }),
         {}
       ),
+      answerCodes: [],
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   createCheckboxes = () => this.props.answers.map(this.createCheckbox);
@@ -32,7 +34,7 @@ export class Question extends Component {
   };
 
   handleClick = (e) => {
-    console.log(e.target.value);
+    this.props.onChildClick(e.target.value);
   };
 
   handleCheckboxChange = (changeEvent) => {
