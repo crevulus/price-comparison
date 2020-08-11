@@ -38,7 +38,6 @@ export class Question extends Component {
   };
 
   handleCheckboxChange = (changeEvent) => {
-    console.log(changeEvent.target);
     const { name } = changeEvent.target;
 
     this.setState((prevState) => ({

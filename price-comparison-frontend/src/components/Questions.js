@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Question from "./Question";
 import axios from "axios";
-import data from "../react-dummy_ZO_questions.json";
 
 export class Questions extends Component {
-  state = {
-    questions: "",
-    questionBlocks: "",
-    answerCodes: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions: "",
+      questionBlocks: "",
+      answerCodes: [],
+    };
+  }
 
   componentWillMount = () => {
     const AxiosConfig = {
@@ -28,7 +30,7 @@ export class Questions extends Component {
   };
 
   handleChildClick = (code) => {
-    console.log(code);
+    console.log("Update chart here " + code);
     if (this.state.answerCodes.includes(code)) {
       const index = this.state.answerCodes.indexOf(code);
       const newAnswerCodes = this.state.answerCodes.splice(index, 1);
@@ -38,12 +40,15 @@ export class Questions extends Component {
     }
   };
 
+  componentDidUpdate = () => {
+    this.props.onChildUpdate(this.state.answerCodes);
+  };
+
   render() {
     const questions = this.state.questions;
     let questionBlocks = Object.keys(questions).map((set) => {
       const answers = [];
       const answerCodes = [];
-      console.log(questions[set]);
       try {
         questions[set].answers.forEach((arr) => {
           answers.push(arr.answer);
@@ -60,7 +65,7 @@ export class Questions extends Component {
           />
         );
       } catch (error) {
-        console.log(error);
+        console.log(error.name + ": " + error.message);
       }
     });
     return <div className="questions-container">{questionBlocks}</div>;
