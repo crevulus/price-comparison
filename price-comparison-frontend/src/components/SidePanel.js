@@ -3,8 +3,8 @@ import Chart from "chart.js";
 import dummyData from "../react-dummy_form_answer.json";
 
 export class SidePanel extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       chart: {},
       totalPrice: 0,
