@@ -12,7 +12,7 @@ export class Questions extends Component {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     const AxiosConfig = {
       withCredentials: false,
       headers: {
@@ -46,28 +46,30 @@ export class Questions extends Component {
 
   render() {
     const questions = this.state.questions;
-    let questionBlocks = Object.keys(questions).map((set) => {
-      const answers = [];
-      const answerCodes = [];
-      try {
-        questions[set].answers.forEach((arr) => {
-          answers.push(arr.answer);
-        });
-        questions[set].answers.forEach((arr) => {
-          answerCodes.push(arr.answerCode);
-        });
-        return (
-          <Question
-            question={questions[set].question} // not sure why it works but I ain't questionin' it.
-            answers={answers}
-            answerCodes={answerCodes}
-            onChildClick={this.handleChildClick}
-          />
-        );
-      } catch (error) {
-        console.log(error.name + ": " + error.message);
-      }
-    });
+    let questionBlocks = this.state.questions
+      ? Object.keys(questions).map((set) => {
+          const answers = [];
+          const answerCodes = [];
+          try {
+            questions[set].answers.forEach((arr) => {
+              answers.push(arr.answer);
+            });
+            questions[set].answers.forEach((arr) => {
+              answerCodes.push(arr.answerCode);
+            });
+            return (
+              <Question
+                question={questions[set].question} // not sure why it works but I ain't questionin' it.
+                answers={answers}
+                answerCodes={answerCodes}
+                onChildClick={this.handleChildClick}
+              />
+            );
+          } catch (error) {
+            console.log(error.name + ": " + error.message);
+          }
+        })
+      : "Loading...";
     return <div>{questionBlocks}</div>;
   }
 }

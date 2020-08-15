@@ -13,7 +13,7 @@ class App extends Component {
     locationNamesData: "",
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     axios.get("https://changey.uber.space/company/changeis").then((data) => {
       const companyData = data.data[0];
       const locationNamesData = Object.values(companyData)[1];
@@ -28,7 +28,7 @@ class App extends Component {
   };
 
   render() {
-    return (
+    let appContent = this.state.locationNamesData ? (
       <div className="App">
         <Navbar />
         <SidePanel answerCodes={this.state.answerCodes} />
@@ -53,7 +53,10 @@ class App extends Component {
           used for analytics, personalised content, and third-party tracking.
         </CookieConsent>
       </div>
+    ) : (
+      "Loading..."
     );
+    return appContent;
   }
 }
 
