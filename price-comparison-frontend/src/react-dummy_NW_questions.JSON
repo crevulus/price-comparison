@@ -1,0 +1,38 @@
+{
+  "_id": "2",
+  "Location": "chnw",
+  "Rent": {
+    "question": "What is love?",
+    "answers": [
+      {
+        "answer": "baby don't hurt me",
+        "answerCode": "nw-rent-bdhm"
+      },
+      {
+        "answer": "don't hurt me",
+        "answerCode": "nw-rent-dhm"
+      },
+      {
+        "answer": "no more",
+        "answerCode": "nw-rent-nm"
+      }
+    ]
+  },
+  "Gym": {
+    "question": "Is this the real life?",
+    "answers": [
+      {
+        "answer": "or is this just fantasy",
+        "answerCode": "nw-gym-oitjf"
+      },
+      {
+        "answer": "stuck in a landslide",
+        "answerCode": "nw-gym-sials"
+      },
+      {
+        "answer": "no escape from reality",
+        "answerCode": "nw-gym-nefr"
+      }
+    ]
+  }
+}
