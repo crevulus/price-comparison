@@ -6,6 +6,7 @@ export class Questions extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      locationCode: "",
       questions: "",
       questionBlocks: "",
       answerCodes: [],
@@ -13,21 +14,60 @@ export class Questions extends Component {
   }
 
   componentDidMount = () => {
-    const AxiosConfig = {
-      withCredentials: false,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      },
-    };
-    axios
-      .get("https://changey.uber.space/questions/changeis/chzo", AxiosConfig)
-      .then((data) => {
-        this.setState({ questions: data.data[0] }, () =>
-          console.log(this.state.questions)
-        );
-      });
+    if (!this.props.locatiionCode) {
+      return;
+    } else {
+      const AxiosConfig = {
+        withCredentials: false,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      };
+      axios
+        .get(
+          `https://changey.uber.space/questions/changeis/${this.props.locationCode}`,
+          AxiosConfig
+        )
+        .then((data) => {
+          this.setState({ questions: data.data[0] }, () =>
+            console.log(this.state.questions)
+          );
+        });
+    }
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.locatiionCode !== prevState.locatiionCode) {
+      return { locationCode: nextProps.locatiionCode };
+    } else return null;
+  }
+
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (
+  //     nextProps.locationCode &&
+  //     nextProps.locationCode !== prevState.locationCode
+  //   ) {
+  //     const AxiosConfig = {
+  //       withCredentials: false,
+  //       headers: {
+  //         "Access-Control-Allow-Origin": "*",
+  //         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+  //       },
+  //     };
+  //     axios
+  //       .get(
+  //         `https://changey.uber.space/questions/changeis/${nextProps.locationCode}`,
+  //         AxiosConfig
+  //       )
+  //       .then((data) => {
+  //         const { questions } = data.data[0];
+  //         return questions;
+  //       });
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   handleChildClick = (code) => {
     console.log("Update chart here " + code);
@@ -40,8 +80,27 @@ export class Questions extends Component {
     }
   };
 
-  componentDidUpdate = () => {
+  componentDidUpdate = (prevProps) => {
     this.props.onChildUpdate(this.state.answerCodes);
+    if (prevProps.locationCode !== this.props.locationCode) {
+      const AxiosConfig = {
+        withCredentials: false,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      };
+      axios
+        .get(
+          `https://changey.uber.space/questions/changeis/${this.props.locationCode}`,
+          AxiosConfig
+        )
+        .then((data) => {
+          this.setState({ questions: data.data[0] }, () =>
+            console.log(this.state.questions)
+          );
+        });
+    }
   };
 
   render() {

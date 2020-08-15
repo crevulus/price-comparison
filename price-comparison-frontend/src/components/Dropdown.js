@@ -13,6 +13,8 @@ export default class Card extends Component {
     };
 
     this.showMenu = this.showMenu.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   showMenu = (e) => {
@@ -32,7 +34,7 @@ export default class Card extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.locationCode);
+    this.props.onDropdownSubmit(this.state.locationCode);
   };
 
   render() {

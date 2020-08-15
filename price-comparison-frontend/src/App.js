@@ -9,6 +9,7 @@ import Dropdown from "./components/Dropdown";
 
 class App extends Component {
   state = {
+    locationCode: "",
     answerCodes: [],
     locationNamesData: "",
   };
@@ -23,7 +24,13 @@ class App extends Component {
     });
   };
 
-  handleChildUpdate = (codes) => {
+  handleDropdownSubmit = (code) => {
+    this.setState({
+      locationCode: code,
+    });
+  };
+
+  handleQuestionsUpdate = (codes) => {
     console.log("updated " + codes);
   };
 
@@ -34,8 +41,14 @@ class App extends Component {
         <SidePanel answerCodes={this.state.answerCodes} />
         <div className="questions-container">
           <div className="question-block">Intro text</div>
-          <Dropdown locationNames={this.state.locationNamesData} />
-          <Questions onChildUpdate={this.handleChildUpdate} />
+          <Dropdown
+            locationNames={this.state.locationNamesData}
+            onDropdownSubmit={this.handleDropdownSubmit}
+          />
+          <Questions
+            onChildUpdate={this.handleQuestionsUpdate}
+            locationCode={this.state.locationCode}
+          />
         </div>
         <CookieConsent
           style={{ alignItems: "center" }}
