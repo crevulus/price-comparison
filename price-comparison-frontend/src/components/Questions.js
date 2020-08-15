@@ -10,6 +10,7 @@ export class Questions extends Component {
       questions: "",
       questionBlocks: "",
       answerCodes: [],
+      advancedText: "Advanced Options",
       showAdvanced: false,
     };
   }
@@ -54,11 +55,19 @@ export class Questions extends Component {
     }
   };
 
-  showAdvanced = (e) => {
+  toggleAdvanced = (e) => {
     e.preventDefault();
-    this.setState((prevState) => ({
-      showAdvanced: !prevState.showAdvanced,
-    }));
+    if (this.state.advancedText === "Advanced Options") {
+      this.setState((prevState) => ({
+        advancedText: "Hide Options",
+        showAdvanced: !prevState.showAdvanced,
+      }));
+    } else {
+      this.setState((prevState) => ({
+        advancedText: "Advanced Options",
+        showAdvanced: !prevState.showAdvanced,
+      }));
+    }
   };
 
   returnQuestions = () => {
@@ -141,7 +150,7 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
-        <button onClick={this.showAdvanced}>Advanced Options</button>
+        <button onClick={this.toggleAdvanced}>{this.state.advancedText}</button>
       </div>
     );
   }
