@@ -6,7 +6,6 @@ export class Questions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      locationCode: "",
       questions: "",
       questionBlocks: "",
       answerCodes: [],
@@ -16,7 +15,7 @@ export class Questions extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.locatiionCode !== prevState.locatiionCode) {
+    if (nextProps.locationCode !== prevState.locationCode) {
       return { locationCode: nextProps.locatiionCode };
     } else return null;
   }
@@ -37,7 +36,7 @@ export class Questions extends Component {
           AxiosConfig
         )
         .then((data) => {
-          this.setState({ questions: data.data[0] }, () =>
+          this.setState({ questions: data.data[0], answerCodes: [] }, () =>
             console.log(this.state.questions)
           );
         });
@@ -146,7 +145,7 @@ export class Questions extends Component {
               }
             }
           })
-      : "Loading...";
+      : null;
     return (
       <div>
         <div>{questionBlocks}</div>
