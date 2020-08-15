@@ -8,45 +8,61 @@ export default class Card extends Component {
 
     this.state = {
       showMenu: false,
+      locationDropdownText: "Select Location",
+      locationCode: "",
     };
 
     this.showMenu = this.showMenu.bind(this);
   }
 
-  showMenu = (event) => {
-    event.preventDefault();
+  showMenu = (e) => {
+    e.preventDefault();
     this.setState((prevState) => ({
       showMenu: !prevState.showMenu,
     }));
   };
 
   handleClick = (e) => {
-    console.log(e.target.value);
+    this.setState({
+      locationDropdownText: e.target.value,
+      locationCode: e.target.dataset.code,
+    });
+    this.showMenu(e);
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.locationCode);
   };
 
   render() {
     return (
       <div className="question-block">
         <p>Choose your location</p>
-        <div className="dropdown">
-          <button onClick={this.showMenu} className="dropdown-btn">
-            Show menu
-          </button>
-          {this.state.showMenu ? (
-            <div className="dropdown-content">
-              {this.props.locationNames.map((location) => {
-                return (
-                  <button
-                    value={location.Location_name}
-                    onClick={this.handleClick}
-                  >
-                    {location.Location_name}
-                  </button>
-                );
-              })}
-            </div>
-          ) : null}
-        </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="dropdown">
+            <button onClick={this.showMenu} className="dropdown-btn">
+              {this.state.locationDropdownText}
+            </button>
+            {this.state.showMenu ? (
+              <div className="dropdown-content">
+                {this.props.locationNames.map((location) => {
+                  return (
+                    <button
+                      value={location.Location_name}
+                      data-code={location.Location_code}
+                      onClick={this.handleClick}
+                      key={location.Location_code}
+                    >
+                      {location.Location_name}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
+          <button type="submit">Go</button>
+        </form>
       </div>
     );
   }

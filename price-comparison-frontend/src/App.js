@@ -32,8 +32,11 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <SidePanel answerCodes={this.state.answerCodes} />
-        <Dropdown locationNames={this.state.locationNamesData} />
-        <Questions onChildUpdate={this.handleChildUpdate} />
+        <div className="questions-container">
+          <div className="question-block">Intro text</div>
+          <Dropdown locationNames={this.state.locationNamesData} />
+          <Questions onChildUpdate={this.handleChildUpdate} />
+        </div>
         <CookieConsent
           style={{ alignItems: "center" }}
           enableDeclineButton

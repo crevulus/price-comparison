@@ -68,7 +68,7 @@ export class Questions extends Component {
         console.log(error.name + ": " + error.message);
       }
     });
-    return <div className="questions-container">{questionBlocks}</div>;
+    return <div>{questionBlocks}</div>;
   }
 }
 
