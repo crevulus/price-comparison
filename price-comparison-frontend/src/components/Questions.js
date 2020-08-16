@@ -36,8 +36,9 @@ export class Questions extends Component {
           AxiosConfig
         )
         .then((data) => {
-          this.setState({ questions: data.data[0], answerCodes: [] }, () =>
-            console.log(this.state.questions)
+          this.setState(
+            { questions: data.data[0], answerCodes: [], showAdvanced: false },
+            () => console.log(this.state.questions)
           );
         });
     }
@@ -56,44 +57,44 @@ export class Questions extends Component {
 
   toggleAdvanced = (e) => {
     e.preventDefault();
-    if (this.state.advancedText === "Advanced Options") {
+    if (this.state.showAdvanced === true) {
       this.setState((prevState) => ({
-        advancedText: "Hide Options",
+        // advancedText: "Hide Options",
         showAdvanced: !prevState.showAdvanced,
       }));
     } else {
       this.setState((prevState) => ({
-        advancedText: "Advanced Options",
+        // advancedText: "Advanced Options",
         showAdvanced: !prevState.showAdvanced,
       }));
     }
   };
 
-  returnQuestions = () => {
-    const questions = this.state.questions;
-    Object.keys(questions).map((set) => {
-      const answers = [];
-      const answerCodes = [];
-      try {
-        questions[set].answers.forEach((arr) => {
-          answers.push(arr.answer);
-        });
-        questions[set].answers.forEach((arr) => {
-          answerCodes.push(arr.answerCode);
-        });
-        return (
-          <Question
-            question={questions[set].question} // not sure why it works but I ain't questionin' it.
-            answers={answers}
-            answerCodes={answerCodes}
-            onChildClick={this.handleChildClick}
-          />
-        );
-      } catch (error) {
-        console.log(error.name + ": " + error.message);
-      }
-    });
-  };
+  // returnQuestions = () => {
+  //   const questions = this.state.questions;
+  //   Object.keys(questions).map((set) => {
+  //     const answers = [];
+  //     const answerCodes = [];
+  //     try {
+  //       questions[set].answers.forEach((arr) => {
+  //         answers.push(arr.answer);
+  //       });
+  //       questions[set].answers.forEach((arr) => {
+  //         answerCodes.push(arr.answerCode);
+  //       });
+  //       return (
+  //         <Question
+  //           question={questions[set].question} // not sure why it works but I ain't questionin' it.
+  //           answers={answers}
+  //           answerCodes={answerCodes}
+  //           onChildClick={this.handleChildClick}
+  //         />
+  //       );
+  //     } catch (error) {
+  //       console.log(error.name + ": " + error.message);
+  //     }
+  //   });
+  // };
 
   render() {
     const questions = this.state.questions;

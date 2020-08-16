@@ -1,14 +1,15 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
+
 /* navbar styling  */
-.navbar {
+.navbar-contents {
   overflow: hidden;
   display: grid;
   grid-template-columns: 10% auto 10%;
   background-color: white;
-  height: 4rem;
-  padding: 1rem;
+  height: 5rem;
+  margin-top: -3px;
   margin-bottom: 10px;
   box-shadow: 10px 0px 8px;
 }
@@ -19,10 +20,15 @@
   max-height: 2em;
 }
 
+.verloop {
+  max-width: 100%;
+  margin-right: -1px;
+}
+
 .logo {
   justify-self: center;
   align-self: center;
-  max-height: 3.5rem;
+  max-height: 4rem;
   max-width: 8rem;
 }
 
@@ -65,5 +71,5 @@
   box-shadow: 1px 2px 2px #333;
   background-color: white;
   margin: 10px;
-  padding-bottom: 2px;
+  padding: 5px;
 }
