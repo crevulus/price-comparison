@@ -48,18 +48,18 @@ export class Question extends Component {
     }));
   };
 
-  selectAll = () => this.selectAllCheckboxes(true);
+  // selectAll = () => this.selectAllCheckboxes(true);
 
-  selectAllCheckboxes = (isSelected) => {
-    Object.keys(this.state.checkboxes).forEach((checkbox) => {
-      this.setState((prevState) => ({
-        checkboxes: {
-          ...prevState.checkboxes,
-          [checkbox]: isSelected,
-        },
-      }));
-    });
-  };
+  // selectAllCheckboxes = (isSelected) => {
+  //   Object.keys(this.state.checkboxes).forEach((checkbox) => {
+  //     this.setState((prevState) => ({
+  //       checkboxes: {
+  //         ...prevState.checkboxes,
+  //         [checkbox]: isSelected,
+  //       },
+  //     }));
+  //   });
+  // };
 
   handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
@@ -76,12 +76,7 @@ export class Question extends Component {
         {this.props.question}
         <form onSubmit={this.handleFormSubmit}>
           {this.createCheckboxes()}
-          <div>
-            <button type="button" onClick={this.selectAll}>
-              Select All
-            </button>
-            <button type="submit">Update</button>
-          </div>
+          {/*                                     */}
         </form>
       </div>
     );

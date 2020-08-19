@@ -38,6 +38,7 @@ class App extends Component {
     let appContent = this.state.locationNamesData ? (
       <div className="App">
         <Navbar />
+        <div className="spacing-div-navbar-content" />
         <SidePanel answerCodes={this.state.answerCodes} />
         <div className="questions-container">
           <div className="question-block">Intro text</div>
