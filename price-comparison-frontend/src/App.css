@@ -103,12 +103,6 @@ button {
 }
 
 /* questions & answers */
-.answers-list {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-}
-
 .questions-container {
   padding: 1rem;
   width: calc(100% - 23em);
@@ -122,13 +116,30 @@ button {
   padding: 5px;
 }
 
-.advanced-options {
-  width: 100%;
+.answer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px 0;
+}
+
+.checkbox {
+  margin-right: 7px;
+}
+
+.advanced-options {
+  display: flex;
+  width: 100%;
+  padding: 5px 10px;
+  justify-content: space-between;
+  align-items: center;
   background: none;
   border: none;
+  box-shadow: 2px 2px 4px #cecece;
   border-radius: 25px;
   background-color: #00a78d;
   color: white;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
+  font-weight: 600;
 }

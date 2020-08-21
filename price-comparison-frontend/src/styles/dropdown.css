@@ -1,8 +1,14 @@
+.location-form {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  margin: 5px 0;
+}
+
 /* Style The Dropdown Button */
 .dropdown-btn {
   background-color: white;
-  color: #0097ff;
-  padding: 16px;
+  color: #00a78d;
+  padding: 8px;
   font-size: 16px;
   border: 1px solid #555;
   border-radius: 2px;
@@ -20,15 +26,17 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  border-radius: 2px;
   width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  background-color: white;
 }
 
 /* Links inside the dropdown */
 .dropdown-content button {
-  color: black;
+  background-color: rgb(108, 108, 108, 0.1);
+  border: none;
+  color: #00a78d;
   width: 100%;
   padding: 12px 16px;
   text-decoration: none;
@@ -36,8 +44,8 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+.dropdown-content button:hover {
+  background-color: #ccc;
 }
 
 /* Show the dropdown menu on hover */
@@ -47,5 +55,20 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: #00a78d;
+}
+
+.dropdown-submit {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  padding: 6px;
+  padding-left: 11px;
+  border: none;
+  background: none;
+  background-color: #00a78d;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #cecece;
+  color: white;
+  font-size: 1.1rem;
 }

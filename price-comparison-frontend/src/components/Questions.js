@@ -156,12 +156,17 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
-        <button className="advanced-options" onClick={this.toggleAdvanced}>
-          {this.state.advancedText}
-          <span>
-            {this.showAdvanced ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-          </span>
-        </button>
+        {this.state.showAdvanced ? (
+          <button className="advanced-options" onClick={this.toggleAdvanced}>
+            Hide Advanced Options
+            <ExpandLessIcon />
+          </button>
+        ) : !this.state.showAdvanced && this.state.locationCode ? (
+          <button className="advanced-options" onClick={this.toggleAdvanced}>
+            Show Advanced Options
+            <ExpandMoreIcon />
+          </button>
+        ) : null}
       </div>
     );
   }

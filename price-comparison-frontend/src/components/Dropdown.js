@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import "../App.css";
 import "../styles/dropdown.css";
 
@@ -40,8 +41,8 @@ export default class Card extends Component {
   render() {
     return (
       <div className="question-block">
-        <p>Choose your location</p>
-        <form onSubmit={this.handleSubmit}>
+        <div>Choose your location</div>
+        <form onSubmit={this.handleSubmit} className="location-form">
           <div className="dropdown">
             <button onClick={this.showMenu} className="dropdown-btn">
               {this.state.locationDropdownText}
@@ -63,7 +64,10 @@ export default class Card extends Component {
               </div>
             ) : null}
           </div>
-          <button type="submit">Go</button>
+          <button type="submit" className="dropdown-submit">
+            Go
+            <ChevronRightIcon className="dropdown-submit-icon" />
+          </button>
         </form>
       </div>
     );

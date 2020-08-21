@@ -9,7 +9,7 @@ const Checkbox = ({
   onClick,
   price,
 }) => (
-  <div className="answers-list">
+  <div className="answer-row">
     <label className="answer-and-check">
       <input
         type="checkbox"
