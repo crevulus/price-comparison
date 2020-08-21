@@ -41,6 +41,7 @@ class App extends Component {
         <div className="spacing-div-navbar-content" />
         <SidePanel answerCodes={this.state.answerCodes} />
         <div className="questions-container">
+          <h2>Welcome!</h2>
           <div className="question-block">Intro text</div>
           <Dropdown
             locationNames={this.state.locationNamesData}

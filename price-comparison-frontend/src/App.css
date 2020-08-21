@@ -1,6 +1,21 @@
-/* .App {
-  text-align: center;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f9f7;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+button {
+  cursor: pointer;
+}
 
 /* navbar styling  */
 .navbar-container {
@@ -23,9 +38,9 @@
   display: flex;
   align-self: center;
   max-height: 2em;
-  margin-left: 1rem;
+  margin: 0 1rem;
   background: none;
-  color: green;
+  color: #00a78d;
   text-decoration: underline;
   border: none;
   font-size: 1.1rem;
@@ -66,7 +81,7 @@
   right: 0;
   border-radius: 5px 0 0 5px;
   background-color: white;
-  box-shadow: -2px 0px 8px #333;
+  box-shadow: -2px 0px 8px #a7a7a7;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -88,6 +103,12 @@
 }
 
 /* questions & answers */
+.answers-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
 .questions-container {
   padding: 1rem;
   width: calc(100% - 23em);
@@ -95,8 +116,19 @@
 
 .question-block {
   border-radius: 5px;
-  box-shadow: 1px 2px 2px #333;
+  box-shadow: 1px 2px 2px #a7a7a7;
   background-color: white;
-  margin: 10px;
+  margin-bottom: 10px;
   padding: 5px;
+}
+
+.advanced-options {
+  width: 100%;
+  padding: 5px 0;
+  background: none;
+  border: none;
+  border-radius: 25px;
+  background-color: #00a78d;
+  color: white;
+  font-size: 1.1rem;
 }

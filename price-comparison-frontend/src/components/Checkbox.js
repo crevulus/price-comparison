@@ -22,7 +22,7 @@ const Checkbox = ({
       />
       {label}
     </label>
-    <div>{price}</div>
+    <div className="answer-price">€{price}</div>
   </div>
 );
 

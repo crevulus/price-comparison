@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Question from "./Question";
 import axios from "axios";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 export class Questions extends Component {
   constructor(props) {
@@ -154,7 +156,12 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
-        <button onClick={this.toggleAdvanced}>{this.state.advancedText}</button>
+        <button className="advanced-options" onClick={this.toggleAdvanced}>
+          {this.state.advancedText}
+          <span>
+            {this.showAdvanced ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          </span>
+        </button>
       </div>
     );
   }
