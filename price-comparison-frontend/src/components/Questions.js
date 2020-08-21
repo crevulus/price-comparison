@@ -16,7 +16,7 @@ export class Questions extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.locationCode !== prevState.locationCode) {
-      return { locationCode: nextProps.locatiionCode };
+      return { locationCode: nextProps.locationCode };
     } else return null;
   }
 
@@ -115,6 +115,7 @@ export class Questions extends Component {
                   question={questions[set].question} // not sure why it works but I ain't questionin' it.
                   answers={answers}
                   answerCodes={answerCodes}
+                  prices={questions[set].answers.map((answer) => answer.price)}
                   onChildClick={this.handleChildClick}
                 />
               );
@@ -138,6 +139,9 @@ export class Questions extends Component {
                     question={questions[set].question} // not sure why it works but I ain't questionin' it.
                     answers={answers}
                     answerCodes={answerCodes}
+                    prices={questions[set].answers.map(
+                      (answer) => answer.price
+                    )}
                     onChildClick={this.handleChildClick}
                   />
                 );

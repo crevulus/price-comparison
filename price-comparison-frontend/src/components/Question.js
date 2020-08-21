@@ -26,6 +26,7 @@ export class Question extends Component {
         label={option}
         isSelected={this.state.checkboxes[option]}
         onCheckboxChange={this.handleCheckboxChange}
+        price={this.props.prices[i]}
         key={option}
         dbKey={this.props.answerCodes[i]}
         onClick={this.handleClick}
@@ -74,10 +75,7 @@ export class Question extends Component {
     return (
       <div className="question-block">
         {this.props.question}
-        <form onSubmit={this.handleFormSubmit}>
-          {this.createCheckboxes()}
-          {/*                                     */}
-        </form>
+        <form onSubmit={this.handleFormSubmit}>{this.createCheckboxes()}</form>
       </div>
     );
   }

@@ -1,7 +1,14 @@
 import React from "react";
 import "../App.css";
 
-const Checkbox = ({ label, isSelected, onCheckboxChange, dbKey, onClick }) => (
+const Checkbox = ({
+  label,
+  isSelected,
+  onCheckboxChange,
+  dbKey,
+  onClick,
+  price,
+}) => (
   <div className="answers-list">
     <label className="answer-and-check">
       <input
@@ -15,6 +22,7 @@ const Checkbox = ({ label, isSelected, onCheckboxChange, dbKey, onClick }) => (
       />
       {label}
     </label>
+    <div>{price}</div>
   </div>
 );
 
