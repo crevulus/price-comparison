@@ -13,26 +13,53 @@ class App extends Component {
     locationCode: "",
     answerCodes: [],
     locationNamesData: "",
+    pricesData: "",
   };
 
   componentDidMount = () => {
-    axios.get("https://changey.uber.space/company/changeis").then((data) => {
-      const companyData = data.data[0];
-      const locationNamesData = Object.values(companyData)[1];
-      this.setState({
-        locationNamesData: locationNamesData,
+    axios
+      .get("https://changey.uber.space/company/changeis")
+      .then((data) => {
+        const companyData = data.data[0];
+        const locationNamesData = Object.values(companyData)[1];
+        this.setState({
+          locationNamesData: locationNamesData,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   };
 
   handleDropdownSubmit = (code) => {
     this.setState({
       locationCode: code,
     });
+    axios
+      .get(`https://changey.uber.space/prices/${code}`)
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  handleQuestionsUpdate = (codes) => {
-    console.log(codes);
+  handleAnswersUpdate = (codes) => {
+    let newPricesData = [];
+    // send call to prices aPI in here
+    if (codes) {
+      axios
+        .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {
+          answer: codes,
+        })
+        .then((data) => {
+          data.data.forEach((item) => newPricesData.push(item));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    console.log(newPricesData);
+    this.setState({ pricesData: newPricesData });
   };
 
   render() {
@@ -40,7 +67,10 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div className="spacing-div-navbar-content" />
-        <SidePanel answerCodes={this.state.answerCodes} />
+        <SidePanel
+          answerCodes={this.state.answerCodes}
+          pricesData={this.state.pricesData}
+        />
         <div className="background-rec">
           <div className="welcome-container">
             <div className="welcome-text">
@@ -75,7 +105,7 @@ class App extends Component {
             onDropdownSubmit={this.handleDropdownSubmit}
           />
           <Questions
-            onChildUpdate={this.handleQuestionsUpdate}
+            onChildUpdate={this.handleAnswersUpdate}
             locationCode={this.state.locationCode}
           />
         </div>
