@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+import Chanti from "./assets/change-is-chanti.png";
 import Navbar from "./components/Navbar";
 import SidePanel from "./components/SidePanel";
 import CookieConsent from "react-cookie-consent";
@@ -40,9 +41,33 @@ class App extends Component {
         <Navbar />
         <div className="spacing-div-navbar-content" />
         <SidePanel answerCodes={this.state.answerCodes} />
+        <div className="background-rec">
+          <div className="welcome-container">
+            <h2>Costs Calculator</h2>
+            <h4>Affordability</h4>
+            <div className="welcome-line"></div>
+            <p>
+              <strong>
+                Three simple steps to calculate your monthly expenses:
+              </strong>
+            </p>
+            <ol>
+              <li>
+                Choose your location and compare energy providers for your base
+                monthly costs
+              </li>
+              <li>See what that would cost you elsewhere</li>
+              <li>
+                Add extra options to take full advantage of Change= networked
+                living
+              </li>
+            </ol>
+            <div className="welcome-image">
+              <img src={Chanti} alt="Chanti" />
+            </div>
+          </div>
+        </div>
         <div className="questions-container">
-          <h2>Welcome!</h2>
-          <div className="question-block">Intro text</div>
           <Dropdown
             locationNames={this.state.locationNamesData}
             onDropdownSubmit={this.handleDropdownSubmit}
