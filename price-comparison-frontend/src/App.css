@@ -110,8 +110,12 @@ button {
 }
 
 .welcome-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   padding: 1rem;
   width: calc(100% - 23em);
+  height: 100%;
   color: white;
 }
 
@@ -129,11 +133,6 @@ button {
   height: 200px;
   overflow: hidden;
   border-radius: 50%;
-  /* background: skin-tone.jpg;
-  background-size: cover;
-  border-radius: 50% 50% 50% 50%;
-  width: 100px;
-  height: 100px; */
 }
 
 .welcome-image img {
@@ -182,4 +181,10 @@ button {
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .welcome-image {
+    display: none;
+  }
 }

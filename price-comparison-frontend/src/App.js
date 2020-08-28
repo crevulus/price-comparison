@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   handleQuestionsUpdate = (codes) => {
-    console.log("updated " + codes);
+    console.log(codes);
   };
 
   render() {
@@ -43,25 +43,27 @@ class App extends Component {
         <SidePanel answerCodes={this.state.answerCodes} />
         <div className="background-rec">
           <div className="welcome-container">
-            <h2>Costs Calculator</h2>
-            <h4>Affordability</h4>
-            <div className="welcome-line"></div>
-            <p>
-              <strong>
-                Three simple steps to calculate your monthly expenses:
-              </strong>
-            </p>
-            <ol>
-              <li>
-                Choose your location and compare energy providers for your base
-                monthly costs
-              </li>
-              <li>See what that would cost you elsewhere</li>
-              <li>
-                Add extra options to take full advantage of Change= networked
-                living
-              </li>
-            </ol>
+            <div className="welcome-text">
+              <h2>Costs Calculator</h2>
+              <h4>Affordability</h4>
+              <div className="welcome-line"></div>
+              <p>
+                <strong>
+                  Three simple steps to calculate your monthly expenses:
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  Choose your location and compare energy providers for your
+                  base monthly costs
+                </li>
+                <li>See what that would cost you elsewhere</li>
+                <li>
+                  Add extra options to take full advantage of Change= networked
+                  living
+                </li>
+              </ol>
+            </div>
             <div className="welcome-image">
               <img src={Chanti} alt="Chanti" />
             </div>

@@ -14,6 +14,8 @@ export class Questions extends Component {
       advancedText: "Advanced Options",
       showAdvanced: false,
     };
+
+    this.handleChildClick = this.handleChildClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -47,7 +49,6 @@ export class Questions extends Component {
   };
 
   handleChildClick = (code) => {
-    console.log("Update chart here " + code);
     if (this.state.answerCodes.includes(code)) {
       const index = this.state.answerCodes.indexOf(code);
       const newAnswerCodes = this.state.answerCodes.splice(index, 1);
