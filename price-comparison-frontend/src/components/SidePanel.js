@@ -5,6 +5,44 @@ import Chart from "chart.js";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import dummyData from "../react-dummy_form_answer.json";
+// import dummyPrices from "../react-dummy_prices-response.JSON";
+
+const dummyPrices = [
+  {
+    titel: "Water cost",
+    price: 10,
+    tooltip: "Monthly water cost. Click here to learn more",
+    explenation:
+      "Dont like your water bill well neither we do like paying bills but since we make some money we will also pay bills or buy pills",
+    standard: true,
+    color: "#ff0000",
+  },
+  {
+    titel: "Energy cost",
+    price: 10,
+    tooltip: "Engery engery energy. Click here to learn more",
+    explenation:
+      "Energy is what we need what drives us and so on maybe try to inerst a hyper link www.giyf.com can we open it? Not even sure if its a real link tbh",
+    standard: true,
+    color: "#000000",
+  },
+  {
+    titel: "Service cost",
+    price: 60,
+    tooltip: "We provide service please pay. Click here to learn more",
+    explenation: "Alot of services very cool you see veryyyy cool",
+    standard: true,
+    color: "#00ff00",
+  },
+  {
+    titel: "Competitor",
+    price: 60,
+    tooltip: "We provide service please pay. Click here to learn more",
+    explenation: "Alot of services very cool you see veryyyy cool",
+    standard: true,
+    color: "#555555",
+  },
+];
 
 export class SidePanel extends Component {
   constructor(props) {
@@ -27,37 +65,28 @@ export class SidePanel extends Component {
   }
 
   componentDidMount() {
+    let datasets = [];
+    dummyPrices.forEach((set) => {
+      if (set.titel === "Competitor") {
+        let obj = {};
+        obj.label = set.titel;
+        obj.backgroundColor = set.color;
+        obj.data = [0, set.price];
+        datasets.push(obj);
+      } else {
+        let obj = {};
+        obj.label = set.titel;
+        obj.backgroundColor = set.color;
+        obj.data = [set.price, 0];
+        datasets.push(obj);
+      }
+    });
+    console.log(datasets);
     const myChart = new Chart(this.chartRef.current, {
       type: "bar",
       data: {
         labels: ["Change=", "Competitor"],
-        datasets: [
-          {
-            label: "Service costs",
-            backgroundColor: "pink",
-            data: [],
-          },
-          {
-            label: "Base rent",
-            backgroundColor: "lightyellow",
-            data: [],
-          },
-          {
-            label: "Add ons",
-            backgroundColor: "lightgreen",
-            data: [],
-          },
-          {
-            label: "Water",
-            backgroundColor: "lightblue",
-            data: [],
-          },
-          {
-            label: "Competitor",
-            backgroundColor: "lightgrey",
-            data: [, 800],
-          },
-        ],
+        datasets: datasets,
       },
       options: {
         legend: {
