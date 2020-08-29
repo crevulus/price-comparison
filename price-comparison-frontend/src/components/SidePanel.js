@@ -37,8 +37,8 @@ const dummyPrices = [
   {
     titel: "Competitor",
     price: 60,
-    tooltip: "We provide service please pay. Click here to learn more",
-    explenation: "Alot of services very cool you see veryyyy cool",
+    tooltip: "Competitor Tooltip",
+    explenation: "They suck.",
     standard: true,
     color: "#555555",
   },
@@ -72,12 +72,14 @@ export class SidePanel extends Component {
         obj.label = set.titel;
         obj.backgroundColor = set.color;
         obj.data = [0, set.price];
+        obj.tooltip = set.tooltip;
         datasets.push(obj);
       } else {
         let obj = {};
         obj.label = set.titel;
         obj.backgroundColor = set.color;
         obj.data = [set.price, 0];
+        obj.tooltip = set.tooltip;
         datasets.push(obj);
       }
     });
@@ -101,6 +103,21 @@ export class SidePanel extends Component {
         maintainAspectRatio: false,
         tooltips: {
           mode: "nearest",
+          callbacks: {
+            afterTitle: (item, data) => {
+              console.log(item);
+              for (let i = 0; data.datasets.length > i; i++) {
+                if (item[0].datasetIndex === i) {
+                  return data.datasets[i].tooltip;
+                }
+              }
+              // data.datasets.forEach((set, i) => {
+              //   if (i === item[i].index) {
+              //     return set.tooltip;
+              //   }
+              // });
+            },
+          },
         },
         scales: {
           xAxes: [
