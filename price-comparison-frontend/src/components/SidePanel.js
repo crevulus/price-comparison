@@ -11,7 +11,7 @@ const dummyPrices = [
   {
     titel: "Water cost",
     price: 10,
-    tooltip: "Monthly water cost. Click here to learn more",
+    tooltip: "Monthly water cost",
     explenation:
       "Dont like your water bill well neither we do like paying bills but since we make some money we will also pay bills or buy pills",
     standard: true,
@@ -83,7 +83,6 @@ export class SidePanel extends Component {
         datasets.push(obj);
       }
     });
-    console.log(datasets);
     const myChart = new Chart(this.chartRef.current, {
       type: "bar",
       data: {
@@ -104,21 +103,21 @@ export class SidePanel extends Component {
         tooltips: {
           mode: "nearest",
           callbacks: {
-            afterTitle: (item, data) => {
-              console.log(item);
+            afterBody: (item, data) => {
               for (let i = 0; data.datasets.length > i; i++) {
                 if (item[0].datasetIndex === i) {
                   return data.datasets[i].tooltip;
                 }
               }
-              // data.datasets.forEach((set, i) => {
-              //   if (i === item[i].index) {
-              //     return set.tooltip;
-              //   }
-              // });
             },
           },
         },
+        // tooltips: {
+        //   // Disable the on-canvas tooltip
+        //   enabled: false,
+
+        //   custom:
+        // },
         scales: {
           xAxes: [
             {
