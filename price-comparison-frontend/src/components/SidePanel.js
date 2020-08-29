@@ -8,8 +8,18 @@ export class SidePanel extends Component {
     this.state = {
       chart: {},
       totalPrice: 0,
+      pricesData: "",
     };
     this.chartRef = React.createRef();
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.pricesData !== prevState.pricesData) {
+      console.log(nextProps.pricesData);
+      return { pricesData: nextProps.pricesData };
+    } else {
+      return null;
+    }
   }
 
   componentDidMount() {
@@ -69,7 +79,6 @@ export class SidePanel extends Component {
             {
               stacked: true,
               ticks: {
-                // Include a dollar sign in the grid
                 callback: function (value) {
                   return "€" + value;
                 },
@@ -83,6 +92,7 @@ export class SidePanel extends Component {
   }
 
   updateChart = (chart) => {
+    console.log(this.props.pricesData);
     chart.data.datasets[0].data = [dummyData.serviceCosts["service-price"]];
     chart.data.datasets[1].data = [dummyData.building["20sqm-baserent"]];
     chart.data.datasets[2].data = [

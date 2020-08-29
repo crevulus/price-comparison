@@ -38,12 +38,9 @@ class App extends Component {
     this.setState({
       locationCode: code,
     });
-    axios
-      .get(`https://changey.uber.space/prices/${code}`)
-      .then((data) => console.log(data))
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.get(`https://changey.uber.space/prices/${code}`).catch((error) => {
+      console.log(error);
+    });
   };
 
   handleAnswersUpdate = (codes) => {
@@ -60,15 +57,15 @@ class App extends Component {
           console.log(error);
         });
     }
-    console.log(newPricesData);
     this.setState((prevState) => {
-      if (_.isEqual(prevState, this.pricesData)) {
+      if (_.isEqual(prevState.pricesData, newPricesData)) {
+        return;
+      } else {
         return {
           pricesData: newPricesData,
         };
       }
     });
-    console.log(this.state.pricesData);
   };
 
   render() {
