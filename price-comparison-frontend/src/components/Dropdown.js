@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
 import "../App.css";
 import "../styles/dropdown.css";
 
@@ -64,7 +66,7 @@ export default class Card extends Component {
               </div>
             ) : null}
           </div>
-          <button type="submit" className="dropdown-submit">
+          <button type="submit" className="submit">
             Go
             <ChevronRightIcon className="dropdown-submit-icon" />
           </button>

@@ -34,11 +34,13 @@ button {
   box-shadow: 10px 0px 8px;
 }
 
-.back-button {
+.back-link {
   display: flex;
   align-self: center;
-  max-height: 2em;
   margin: 0 1rem;
+}
+
+.back-button {
   background: none;
   color: #00a78d;
   text-decoration: underline;
@@ -102,6 +104,26 @@ button {
   font-size: 2rem;
 }
 
+.submit {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  padding: 6px;
+  padding-left: 11px;
+  border: none;
+  background: none;
+  background-color: #00a78d;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #cecece;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.aanmelden-link {
+  text-decoration: none;
+  float: right;
+}
+
 /* welcome banner */
 .background-rec {
   background-image: linear-gradient(#00a78d, #00a78d3f);
@@ -117,6 +139,7 @@ button {
   width: calc(100% - 23em);
   height: 100%;
   color: white;
+  text-shadow: 1px 1px 4px #686868;
 }
 
 .welcome-line {

@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+
 import Chart from "chart.js";
+
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
 import dummyData from "../react-dummy_form_answer.json";
 
 export class SidePanel extends Component {
@@ -123,6 +127,12 @@ export class SidePanel extends Component {
           Update
         </button>
         <div className="price">€{this.state.totalPrice}</div>
+        <a href="https://www.google.com" className="aanmelden-link">
+          <button type="submit" className="submit">
+            Aanmelden
+            <ChevronRightIcon className="dropdown-submit-icon" />
+          </button>
+        </a>
       </div>
     );
   }
