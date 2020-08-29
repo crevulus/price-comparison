@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import _ from "lodash";
+
 import "./App.css";
 import Chanti from "./assets/change-is-chanti.png";
+
 import Navbar from "./components/Navbar";
 import SidePanel from "./components/SidePanel";
 import CookieConsent from "react-cookie-consent";
@@ -45,7 +48,6 @@ class App extends Component {
 
   handleAnswersUpdate = (codes) => {
     let newPricesData = [];
-    // send call to prices aPI in here
     if (codes) {
       axios
         .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {
@@ -59,7 +61,14 @@ class App extends Component {
         });
     }
     console.log(newPricesData);
-    this.setState({ pricesData: newPricesData });
+    this.setState((prevState) => {
+      if (_.isEqual(prevState, this.pricesData)) {
+        return {
+          pricesData: newPricesData,
+        };
+      }
+    });
+    console.log(this.state.pricesData);
   };
 
   render() {
