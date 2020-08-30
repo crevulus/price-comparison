@@ -89,69 +89,76 @@ class App extends Component {
   render() {
     let appContent = this.state.locationNamesData ? (
       <div className="App">
-        <Navbar />
-        <div className="spacing-div-navbar-content" />
-        <SidePanel
-          answerCodes={this.state.answerCodes}
-          pricesData={this.state.pricesData}
-        />
-        <div className="background-rec">
-          <div className="welcome-container">
-            <div className="welcome-text">
-              <h2>Costs Calculator</h2>
-              <h4>Affordability</h4>
-              <div className="welcome-line"></div>
-              <p>
-                <strong>
-                  Three simple steps to calculate your monthly expenses:
-                </strong>
-              </p>
-              <ol>
-                <li>
-                  Choose your location and compare energy providers for your
-                  base monthly costs
-                </li>
-                <li>See what that would cost you elsewhere</li>
-                <li>
-                  Add extra options to take full advantage of Change= networked
-                  living
-                </li>
-              </ol>
-            </div>
-            <div className="welcome-image">
-              <img src={Chanti} alt="Chanti" />
-            </div>
-          </div>
-        </div>
-        <div className="questions-container">
-          <Dropdown
-            locationNames={this.state.locationNamesData}
-            onDropdownSubmit={this.handleDropdownSubmit}
-          />
-          <Questions
-            onChildUpdate={this.handleAnswersUpdate}
-            locationCode={this.state.locationCode}
-          />
-        </div>
         {this.state.cookieModalShow ? (
           <CookieModal hideModal={this.hideModal} />
         ) : null}
-        <CookieConsent
-          style={{ alignItems: "center" }}
-          enableDeclineButton
-          onDecline={() => this.showModal()}
-          buttonText="Accept"
-          buttonStyle={{ backgroundColor: "#009785", color: "white" }}
-          declineButtonText="Reject"
-          declineButtonStyle={{
-            backgroundColor: "#FFC749",
-            color: "#000000",
-          }}
-          overlay
-        >
-          This website uses cookies to enhance user experience. Cookies will be
-          used for analytics, personalised content, and third-party tracking.
-        </CookieConsent>
+        <div className={this.state.cookieModalShow ? "modal-overlay" : ""}>
+          <Navbar />
+          <div className="spacing-div-navbar-content" />
+          <SidePanel
+            answerCodes={this.state.answerCodes}
+            pricesData={this.state.pricesData}
+          />
+
+          <div className="background-rec">
+            <div className="welcome-container">
+              <div className="welcome-text">
+                <h2>Costs Calculator</h2>
+                <h4>Affordability</h4>
+                <div className="welcome-line"></div>
+                <p>
+                  <strong>
+                    Three simple steps to calculate your monthly expenses:
+                  </strong>
+                </p>
+                <ol>
+                  <li>
+                    Choose your location and compare energy providers for your
+                    base monthly costs
+                  </li>
+                  <li>See what that would cost you elsewhere</li>
+                  <li>
+                    Add extra options to take full advantage of Change=
+                    networked living
+                  </li>
+                </ol>
+              </div>
+              <div className="welcome-image">
+                <img src={Chanti} alt="Chanti" />
+              </div>
+            </div>
+          </div>
+          <div className="questions-container">
+            <Dropdown
+              locationNames={this.state.locationNamesData}
+              onDropdownSubmit={this.handleDropdownSubmit}
+            />
+            <Questions
+              onChildUpdate={this.handleAnswersUpdate}
+              locationCode={this.state.locationCode}
+            />
+          </div>
+
+          <CookieConsent
+            style={{ alignItems: "center" }}
+            enableDeclineButton
+            onDecline={() => {
+              this.showModal();
+            }}
+            buttonText="Accept"
+            buttonStyle={{ backgroundColor: "#009785", color: "white" }}
+            declineButtonText="Reject"
+            declineButtonStyle={{
+              backgroundColor: "#FFC749",
+              color: "#000000",
+            }}
+            overlay
+          >
+            This website uses cookies to enhance user experience. Cookies will
+            be used for analytics, personalised content, and third-party
+            tracking.
+          </CookieConsent>
+        </div>
       </div>
     ) : (
       "Loading..."
