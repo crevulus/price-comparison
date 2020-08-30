@@ -11,6 +11,7 @@ import SidePanel from "./components/SidePanel";
 import CookieConsent from "react-cookie-consent";
 import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
+import CookieModal from "./components/Modals/CookieModal";
 
 class App extends Component {
   state = {
@@ -18,6 +19,19 @@ class App extends Component {
     answerCodes: [],
     locationNamesData: "",
     pricesData: "",
+    cookieModalShow: false,
+  };
+
+  showModal = (e) => {
+    this.setState({
+      cookieModalShow: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      cookieModalShow: false,
+    });
   };
 
   componentDidMount = () => {
@@ -119,9 +133,13 @@ class App extends Component {
             locationCode={this.state.locationCode}
           />
         </div>
+        {this.state.cookieModalShow ? (
+          <CookieModal hideModal={this.hideModal} />
+        ) : null}
         <CookieConsent
           style={{ alignItems: "center" }}
           enableDeclineButton
+          onDecline={() => this.showModal()}
           buttonText="Accept"
           buttonStyle={{ backgroundColor: "#009785", color: "white" }}
           declineButtonText="Reject"
