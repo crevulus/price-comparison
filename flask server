@@ -8,7 +8,7 @@ import json
 app = flask.Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config["MONGO_URI"] = "mongodb://changey_mongoroot:Ferdi291294@127.0.0.1:27017/pricing?authSource=admin"
+app.config["MONGO_URI"] = "mongodb://chXXXXXX:FXXXX@127.0.0.1:27017/pricing?authSource=admin"
 app.config["MONGO_DBNAME"] = "pricing"
 mongo = PyMongo(app)
 #db = mongo.db["pricing"]
