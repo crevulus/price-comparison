@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Chart from "chart.js";
+import _ from "lodash";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
@@ -51,38 +52,43 @@ export class SidePanel extends Component {
       chart: {},
       totalPrice: 0,
       pricesData: "",
+      datasets: [],
     };
     this.chartRef = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.pricesData !== prevState.pricesData) {
-      console.log(nextProps.pricesData);
       return { pricesData: nextProps.pricesData };
     } else {
       return null;
     }
   }
 
-  componentDidMount() {
+  componentDidMount() {}
+
+  componentDidUpdate = () => {
+    console.log(this.state.pricesData);
     let datasets = [];
-    dummyPrices.forEach((set) => {
-      if (set.titel === "Competitor") {
-        let obj = {};
-        obj.label = set.titel;
-        obj.backgroundColor = set.color;
-        obj.data = [0, set.price];
-        obj.tooltip = set.tooltip;
-        datasets.push(obj);
-      } else {
-        let obj = {};
-        obj.label = set.titel;
-        obj.backgroundColor = set.color;
-        obj.data = [set.price, 0];
-        obj.tooltip = set.tooltip;
-        datasets.push(obj);
-      }
-    });
+    if (this.state.pricesData) {
+      this.state.pricesData.data.forEach((set) => {
+        if (set.titel === "Competiors price") {
+          let obj = {};
+          obj.label = set.titel;
+          obj.backgroundColor = set.color;
+          obj.data = [0, set.price];
+          obj.tooltip = set.tooltip;
+          datasets.push(obj);
+        } else {
+          let obj = {};
+          obj.label = set.titel;
+          obj.backgroundColor = set.color;
+          obj.data = [set.price, 0];
+          obj.tooltip = set.tooltip;
+          datasets.push(obj);
+        }
+      });
+    }
     const myChart = new Chart(this.chartRef.current, {
       type: "bar",
       data: {
@@ -137,8 +143,18 @@ export class SidePanel extends Component {
         },
       },
     });
-    this.setState({ chart: myChart });
-  }
+    this.setState((prevState) => {
+      if (_.isEqual(prevState.pricesData, this.state.pricesData)) {
+        console.log("equal");
+        return;
+      } else {
+        console.log("not equal");
+        return {
+          chart: myChart,
+        };
+      }
+    });
+  };
 
   updateChart = (chart) => {
     console.log(this.props.pricesData);
