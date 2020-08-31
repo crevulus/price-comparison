@@ -1,13 +1,14 @@
-from flask import Flask,jsonify,request,render_template
+import flask
 from flask_pymongo import PyMongo 
 from bson.json_util import dumps
 from pymongo import MongoClient
 from flask_cors import CORS, cross_origin
+import json
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config["MONGO_URI"] = "mongodb://changey_mongoroot:[Enter password here]@127.0.0.1:27017/pricing?authSource=admin"
+app.config["MONGO_URI"] = "mongodb://chXXXXXX:FXXXX@127.0.0.1:27017/pricing?authSource=admin"
 app.config["MONGO_DBNAME"] = "pricing"
 mongo = PyMongo(app)
 #db = mongo.db["pricing"]
@@ -41,15 +42,72 @@ def get_questions(name=None, location=None):
     return dumps(mydoc)
 
 
-#WIP current no matter qhat is send returns the same dummy data
+#WIP Turne into Get/ Post and adjust variable pathe
 #Receives keys and returns pricing moduels
-@app.route('/prices', methods = ["Post"])
+@app.route('/prices/<string:location>', methods=['GET', 'POST'])
 @cross_origin()
-def calculate_price():
-    components = request.get_json()
-    dummy_prices  = mongo.db["prices"].find({"location": "dummy"})
-    return dumps(dummy_prices)
+def calculate_price(location):
+
+    if flask.request.method == 'POST':
+      components = flask.request.get_json()
+      prices = mongo.db["prices"].find_one({"location":location})
+      
+      #basic keys which are not included in the questions
+      basic_codes = ["rent-32","water", "energy", "service","competitor"]
+
+      intake_readable_s1 = json.dumps(components)
+      intake_readable_s2 = json.loads(intake_readable_s1)
+
+      #Create the right set of keys by combinding post and the basic keys
+
+      answer =  []
+
+      for i in intake_readable_s2["answer"]:
+          answer.append(i)
+
+      for i in basic_codes:
+          answer.append(i)
+
+      if any("rent" in s for s in answer):
+          print(True)
+
+      else:
+          print(False)
+          answer.append("rent-32")
+
+      print(answer)
+
+      #matching keys with db and create output
+      standard = []
+      c =list(prices.items())
+
+      for i in c[2:]:
+          if i[0] in answer:
+            standard.append(i[1])
+      else:
+          None
+
+      #format answer
+      json_format_answer = json.dumps(standard) 
+      return json_format_answer
+
+    else:
+      prices = mongo.db["prices"].find_one({"location":location})
+      print(prices)
+      standard_prices = []
+      prices_list =list(prices.items())
+      for i in prices_list[2:]:
+          if i[1]["standard"] == True:
+              standard_prices.append(i[1])
+
+          else:
+              None
+
+      json_prices = json.dumps(standard_prices) 
+      return json_prices
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=1024, debug=False) 
+
 
