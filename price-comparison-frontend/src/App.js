@@ -55,7 +55,7 @@ class App extends Component {
     });
     axios
       .get(`https://changey.uber.space/prices/${code}`)
-      .then((data) => this.setState({ pricesData: data }))
+      .then((data) => this.setState({ pricesData: data.data }))
       .catch((error) => {
         console.log(error);
       });

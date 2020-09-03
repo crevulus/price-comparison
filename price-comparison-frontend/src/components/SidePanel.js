@@ -5,46 +5,6 @@ import _ from "lodash";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
-import dummyData from "../react-dummy_form_answer.json";
-// import dummyPrices from "../react-dummy_prices-response.JSON";
-
-const dummyPrices = [
-  {
-    titel: "Water cost",
-    price: 10,
-    tooltip: "Monthly water cost",
-    explenation:
-      "Dont like your water bill well neither we do like paying bills but since we make some money we will also pay bills or buy pills",
-    standard: true,
-    color: "#ff0000",
-  },
-  {
-    titel: "Energy cost",
-    price: 10,
-    tooltip: "Engery engery energy. Click here to learn more",
-    explenation:
-      "Energy is what we need what drives us and so on maybe try to inerst a hyper link www.giyf.com can we open it? Not even sure if its a real link tbh",
-    standard: true,
-    color: "#000000",
-  },
-  {
-    titel: "Service cost",
-    price: 60,
-    tooltip: "We provide service please pay. Click here to learn more",
-    explenation: "Alot of services very cool you see veryyyy cool",
-    standard: true,
-    color: "#00ff00",
-  },
-  {
-    titel: "Competitor",
-    price: 60,
-    tooltip: "Competitor Tooltip",
-    explenation: "They suck.",
-    standard: true,
-    color: "#555555",
-  },
-];
-
 export class SidePanel extends Component {
   constructor(props) {
     super(props);
@@ -65,13 +25,24 @@ export class SidePanel extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.buildChart();
+  }
 
-  componentDidUpdate = () => {
-    console.log(this.state.pricesData);
+  // componentDidUpdate(prevProps) {
+  //   if (!_.isEqual(this.props.pricesData, prevProps.pricesData)) {
+  //     this.buildChart();
+  //   }
+  // }
+
+  // onGoClick = () => {
+  //   this.buildChart();
+  // };
+
+  buildChart = () => {
     let datasets = [];
     if (this.state.pricesData) {
-      this.state.pricesData.data.forEach((set) => {
+      this.state.pricesData.forEach((set) => {
         if (set.titel === "Competiors price") {
           let obj = {};
           obj.label = set.titel;
@@ -106,18 +77,18 @@ export class SidePanel extends Component {
         },
         responsive: true,
         maintainAspectRatio: false,
-        tooltips: {
-          mode: "nearest",
-          callbacks: {
-            afterBody: (item, data) => {
-              for (let i = 0; data.datasets.length > i; i++) {
-                if (item[0].datasetIndex === i) {
-                  return data.datasets[i].tooltip;
-                }
-              }
-            },
-          },
-        },
+        // tooltips: {
+        //   mode: "nearest",
+        //   callbacks: {
+        //     afterBody: (item, data) => {
+        //       for (let i = 0; data.datasets.length > i; i++) {
+        //         if (item[0].datasetIndex === i) {
+        //           return data.datasets[i].tooltip;
+        //         }
+        //       }
+        //     },
+        //   },
+        // },
         // tooltips: {
         //   // Disable the on-canvas tooltip
         //   enabled: false,
@@ -143,40 +114,14 @@ export class SidePanel extends Component {
         },
       },
     });
-    this.setState((prevState) => {
-      if (_.isEqual(prevState.pricesData, this.state.pricesData)) {
-        console.log("equal");
-        return;
-      } else {
-        console.log("not equal");
-        return {
-          chart: myChart,
-        };
-      }
-    });
+    this.setState({ chart: myChart });
   };
 
-  updateChart = (chart) => {
-    console.log(this.props.pricesData);
-    chart.data.datasets[0].data = [dummyData.serviceCosts["service-price"]];
-    chart.data.datasets[1].data = [dummyData.building["20sqm-baserent"]];
-    chart.data.datasets[2].data = [
-      dummyData.tv10["tv10-price"] + dummyData.wifi10["wifi0-price"],
-    ];
-    chart.data.datasets[3].data = [dummyData.water["water-price"]];
-    chart.update();
-    let totalPrice =
-      dummyData.serviceCosts["service-price"] +
-      dummyData.building["20sqm-baserent"] +
-      dummyData.tv10["tv10-price"] +
-      dummyData.wifi10["wifi0-price"] +
-      dummyData.water["water-price"];
-    this.setState({ totalPrice: totalPrice });
-  };
+  updatechart = (chart) => {};
 
   render() {
     return (
-      <div className="sidenav" data={dummyData}>
+      <div className="sidenav">
         <div className="chart-container">
           <canvas ref={this.chartRef} />
         </div>
@@ -186,6 +131,13 @@ export class SidePanel extends Component {
           }}
         >
           Update
+        </button>
+        <button
+          onClick={() => {
+            this.buildChart(); // arrow fn so the fn isn't called on load
+          }}
+        >
+          Build
         </button>
         <div className="price">€{this.state.totalPrice}</div>
         <a href="https://www.google.com" className="aanmelden-link">
