@@ -25,9 +25,9 @@ export class SidePanel extends Component {
     }
   }
 
-  componentDidMount() {
-    this.buildChart();
-  }
+  // componentDidMount() {
+  //   this.buildChart();
+  // }
 
   // componentDidUpdate(prevProps) {
   //   if (!_.isEqual(this.props.pricesData, prevProps.pricesData)) {
@@ -116,8 +116,6 @@ export class SidePanel extends Component {
     });
     this.setState({ chart: myChart });
   };
-
-  updatechart = (chart) => {};
 
   render() {
     return (
