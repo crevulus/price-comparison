@@ -62,7 +62,6 @@ class App extends Component {
   };
 
   handleAnswersUpdate = (codes) => {
-    console.log(codes);
     let newPricesData = [];
     axios
       .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {

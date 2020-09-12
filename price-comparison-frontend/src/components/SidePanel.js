@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Chart from "chart.js";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ExplanationModal from "./Modals/ExplanationModal";
 
 let myChart;
 
@@ -13,9 +14,22 @@ export class SidePanel extends Component {
       totalPrice: 0,
       pricesData: "",
       datasets: [],
+      expModalShow: false,
     };
     this.chartRef = React.createRef();
   }
+
+  showModal = (e) => {
+    this.setState({
+      expModalShow: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      expModalShow: false,
+    });
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.pricesData !== prevState.pricesData) {
@@ -107,26 +121,30 @@ export class SidePanel extends Component {
 
   render() {
     return (
-      <div className="sidenav">
-        <a href="https://www.google.com">
-          <div className="chart-container">
+      <div>
+        {this.state.expModalShow ? (
+          <ExplanationModal hideModal={this.hideModal} />
+        ) : null}
+
+        <div className="sidenav">
+          <div onClick={() => this.showModal()} className="chart-container">
             <canvas ref={this.chartRef} />
           </div>
-        </a>
-        <button
-          onClick={() => {
-            this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
-          }}
-        >
-          Update
-        </button>
-        <div className="price">€{this.state.totalPrice}</div>
-        <a href="https://www.google.com" className="aanmelden-link">
-          <button type="submit" className="submit">
-            Aanmelden
-            <ChevronRightIcon className="dropdown-submit-icon" />
+          <button
+            onClick={() => {
+              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+            }}
+          >
+            Update
           </button>
-        </a>
+          <div className="price">€{this.state.totalPrice}</div>
+          <a href="https://www.google.com" className="aanmelden-link">
+            <button type="submit" className="submit">
+              Aanmelden
+              <ChevronRightIcon className="dropdown-submit-icon" />
+            </button>
+          </a>
+        </div>
       </div>
     );
   }
