@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 import Chart from "chart.js";
 import _ from "lodash";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
+let myChart;
+
 export class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chart: {},
       totalPrice: 0,
       pricesData: "",
       datasets: [],
@@ -25,9 +27,9 @@ export class SidePanel extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.buildChart();
-  // }
+  componentDidMount() {
+    this.buildChart();
+  }
 
   // componentDidUpdate(prevProps) {
   //   if (!_.isEqual(this.props.pricesData, prevProps.pricesData)) {
@@ -38,6 +40,10 @@ export class SidePanel extends Component {
   // onGoClick = () => {
   //   this.buildChart();
   // };
+
+  componentDidUpdate = () => {
+    this.buildChart();
+  };
 
   buildChart = () => {
     let datasets = [];
@@ -60,7 +66,8 @@ export class SidePanel extends Component {
         }
       });
     }
-    const myChart = new Chart(this.chartRef.current, {
+    if (typeof myChart !== "undefined") myChart.destroy();
+    myChart = new Chart(this.chartRef.current, {
       type: "bar",
       data: {
         labels: ["Change=", "Competitor"],
@@ -114,7 +121,6 @@ export class SidePanel extends Component {
         },
       },
     });
-    this.setState({ chart: myChart });
   };
 
   render() {
@@ -125,18 +131,19 @@ export class SidePanel extends Component {
         </div>
         <button
           onClick={() => {
-            this.updateChart(this.state.chart); // arrow fn so the fn isn't called on load
+            this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
           }}
         >
           Update
         </button>
+        {/* 
         <button
           onClick={() => {
             this.buildChart(); // arrow fn so the fn isn't called on load
           }}
         >
           Build
-        </button>
+        </button> */}
         <div className="price">€{this.state.totalPrice}</div>
         <a href="https://www.google.com" className="aanmelden-link">
           <button type="submit" className="submit">
