@@ -62,28 +62,27 @@ class App extends Component {
   };
 
   handleAnswersUpdate = (codes) => {
+    console.log(codes);
     let newPricesData = [];
-    if (codes.length >= 1) {
-      axios
-        .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {
-          answer: codes,
-        })
-        .then((data) => {
-          data.data.forEach((item) => newPricesData.push(item));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      this.setState((prevState) => {
-        if (_.isEqual(prevState.pricesData, newPricesData)) {
-          return;
-        } else {
-          return {
-            pricesData: newPricesData,
-          };
-        }
+    axios
+      .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {
+        answer: codes,
+      })
+      .then((data) => {
+        data.data.forEach((item) => newPricesData.push(item));
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    }
+    this.setState((prevState) => {
+      if (_.isEqual(prevState.pricesData, newPricesData)) {
+        return;
+      } else {
+        return {
+          pricesData: newPricesData,
+        };
+      }
+    });
   };
 
   render() {

@@ -62,42 +62,14 @@ export class Questions extends Component {
     e.preventDefault();
     if (this.state.showAdvanced === true) {
       this.setState((prevState) => ({
-        // advancedText: "Hide Options",
         showAdvanced: !prevState.showAdvanced,
       }));
     } else {
       this.setState((prevState) => ({
-        // advancedText: "Advanced Options",
         showAdvanced: !prevState.showAdvanced,
       }));
     }
   };
-
-  // returnQuestions = () => {
-  //   const questions = this.state.questions;
-  //   Object.keys(questions).map((set) => {
-  //     const answers = [];
-  //     const answerCodes = [];
-  //     try {
-  //       questions[set].answers.forEach((arr) => {
-  //         answers.push(arr.answer);
-  //       });
-  //       questions[set].answers.forEach((arr) => {
-  //         answerCodes.push(arr.answerCode);
-  //       });
-  //       return (
-  //         <Question
-  //           question={questions[set].question} // not sure why it works but I ain't questionin' it.
-  //           answers={answers}
-  //           answerCodes={answerCodes}
-  //           onChildClick={this.handleChildClick}
-  //         />
-  //       );
-  //     } catch (error) {
-  //       console.log(error.name + ": " + error.message);
-  //     }
-  //   });
-  // };
 
   render() {
     const questions = this.state.questions;
@@ -118,6 +90,7 @@ export class Questions extends Component {
                   question={questions[set].question} // not sure why it works but I ain't questionin' it.
                   answers={answers}
                   answerCodes={answerCodes}
+                  explanation={questions[set].Text}
                   prices={questions[set].answers.map((answer) => answer.price)}
                   onChildClick={this.handleChildClick}
                 />
