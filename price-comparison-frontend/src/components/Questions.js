@@ -92,6 +92,7 @@ export class Questions extends Component {
                   answerCodes={answerCodes}
                   explanation={questions[set].Text}
                   prices={questions[set].answers.map((answer) => answer.price)}
+                  text={questions[set].Text}
                   onChildClick={this.handleChildClick}
                 />
               );
@@ -118,6 +119,7 @@ export class Questions extends Component {
                     prices={questions[set].answers.map(
                       (answer) => answer.price
                     )}
+                    text={questions[set].Text}
                     onChildClick={this.handleChildClick}
                   />
                 );

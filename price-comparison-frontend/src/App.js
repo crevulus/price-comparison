@@ -93,7 +93,10 @@ class App extends Component {
           <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
         ) : null}
         {this.state.expModalShow && this.state.locatonCode !== null ? (
-          <ExplanationModal hideModal={() => this.hideModal("expModalShow")} />
+          <ExplanationModal
+            pricesData={this.state.pricesData}
+            hideModal={() => this.hideModal("expModalShow")}
+          />
         ) : null}
         <div
           className={

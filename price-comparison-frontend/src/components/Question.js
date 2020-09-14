@@ -14,6 +14,7 @@ export class Question extends Component {
         {}
       ),
       answerCodes: [],
+      infoModalShow: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -49,6 +50,14 @@ export class Question extends Component {
     }));
   };
 
+  toggleInfo = () => {
+    if (this.state.infoModalShow) {
+      this.setState({ infoModalShow: false });
+    } else {
+      this.setState({ infoModalShow: true });
+    }
+  };
+
   // selectAll = () => this.selectAllCheckboxes(true);
 
   // selectAllCheckboxes = (isSelected) => {
@@ -75,6 +84,8 @@ export class Question extends Component {
     return (
       <div className="question-block">
         {this.props.question}
+        <button onClick={this.toggleInfo}>?</button>
+        {this.state.infoModalShow ? <p>{this.props.text}</p> : null}
         <form onSubmit={this.handleFormSubmit}>{this.createCheckboxes()}</form>
       </div>
     );
