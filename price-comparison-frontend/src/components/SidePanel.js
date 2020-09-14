@@ -18,7 +18,9 @@ export class SidePanel extends Component {
   }
 
   handleChartClick = () => {
-    this.props.onClick();
+    if (this.state.pricesData) {
+      this.props.onClick();
+    } else return;
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {

@@ -16,7 +16,7 @@ import ExplanationModal from "./components/Modals/ExplanationModal";
 
 class App extends Component {
   state = {
-    locationCode: "",
+    locationCode: null,
     answerCodes: [],
     locationNamesData: "",
     pricesData: "",
@@ -92,12 +92,13 @@ class App extends Component {
         {this.state.cookieModalShow ? (
           <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
         ) : null}
-        {this.state.expModalShow ? (
+        {this.state.expModalShow && this.state.locatonCode !== null ? (
           <ExplanationModal hideModal={() => this.hideModal("expModalShow")} />
         ) : null}
         <div
           className={
-            this.state.cookieModalShow || this.state.expModalShow
+            this.state.cookieModalShow ||
+            (this.state.expModalShow && this.state.locationCode !== null)
               ? "modal-overlay"
               : ""
           }
