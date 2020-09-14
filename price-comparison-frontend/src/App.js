@@ -12,6 +12,7 @@ import CookieConsent from "react-cookie-consent";
 import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
 import CookieModal from "./components/Modals/CookieModal";
+import ExplanationModal from "./components/Modals/ExplanationModal";
 
 class App extends Component {
   state = {
@@ -20,17 +21,18 @@ class App extends Component {
     locationNamesData: "",
     pricesData: "",
     cookieModalShow: false,
+    expModalShow: false,
   };
 
-  showModal = (e) => {
+  showModal = (modal) => {
     this.setState({
-      cookieModalShow: true,
+      [modal]: true, // need [] syntax to use param as prop in state
     });
   };
 
-  hideModal = () => {
+  hideModal = (modal) => {
     this.setState({
-      cookieModalShow: false,
+      [modal]: false, // need [] syntax to use param as prop in state
     });
   };
 
@@ -88,12 +90,22 @@ class App extends Component {
     let appContent = this.state.locationNamesData ? (
       <div className="App">
         {this.state.cookieModalShow ? (
-          <CookieModal hideModal={this.hideModal} />
+          <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
         ) : null}
-        <div className={this.state.cookieModalShow ? "modal-overlay" : ""}>
+        {this.state.expModalShow ? (
+          <ExplanationModal hideModal={() => this.hideModal("expModalShow")} />
+        ) : null}
+        <div
+          className={
+            this.state.cookieModalShow || this.state.expModalShow
+              ? "modal-overlay"
+              : ""
+          }
+        >
           <Navbar />
           <div className="spacing-div-navbar-content" />
           <SidePanel
+            onClick={() => this.showModal("expModalShow")}
             answerCodes={this.state.answerCodes}
             pricesData={this.state.pricesData}
           />
@@ -141,7 +153,7 @@ class App extends Component {
             style={{ alignItems: "center" }}
             enableDeclineButton
             onDecline={() => {
-              this.showModal();
+              this.showModal("cookieModalShow");
             }}
             buttonText="Accept"
             buttonStyle={{ backgroundColor: "#009785", color: "white" }}

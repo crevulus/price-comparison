@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Chart from "chart.js";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ExplanationModal from "./Modals/ExplanationModal";
 
 let myChart;
 
@@ -14,21 +13,12 @@ export class SidePanel extends Component {
       totalPrice: 0,
       pricesData: "",
       datasets: [],
-      expModalShow: false,
     };
     this.chartRef = React.createRef();
   }
 
-  showModal = (e) => {
-    this.setState({
-      expModalShow: true,
-    });
-  };
-
-  hideModal = () => {
-    this.setState({
-      expModalShow: false,
-    });
+  handleChartClick = () => {
+    this.props.onClick();
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -122,12 +112,8 @@ export class SidePanel extends Component {
   render() {
     return (
       <div>
-        {this.state.expModalShow ? (
-          <ExplanationModal hideModal={this.hideModal} />
-        ) : null}
-
         <div className="sidenav">
-          <div onClick={() => this.showModal()} className="chart-container">
+          <div onClick={this.handleChartClick} className="chart-container">
             <canvas ref={this.chartRef} />
           </div>
           <button
