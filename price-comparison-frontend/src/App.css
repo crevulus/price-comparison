@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f9f9f7;
+  text-shadow: 0.5px 1px 1px #ccc;
 }
 
 code {
@@ -141,6 +142,21 @@ button {
   font-size: 2rem;
 }
 
+.update {
+  display: flex;
+  align-items: center;
+  float: left;
+  margin: 0 10px;
+  padding: 7px;
+  border: none;
+  background: none;
+  background-color: #fcc72e;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #cecece;
+  color: white;
+  font-size: 1.1rem;
+}
+
 .submit {
   display: flex;
   align-items: center;
@@ -201,6 +217,11 @@ button {
   margin-left: -17px;
 }
 
+.welcome-list {
+  font-weight: 500;
+  text-shadow: 0.5px 1px 2px rgb(129, 129, 129);
+}
+
 /* questions & answers */
 .questions-container {
   padding: 1rem;
@@ -241,6 +262,19 @@ button {
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  float: right;
+  border: none;
+  background: none;
+  background-color: #00a78d;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #cecece;
+  color: white;
+  transition-timing-function: all 1s ease;
 }
 
 @media (max-width: 1200px) {

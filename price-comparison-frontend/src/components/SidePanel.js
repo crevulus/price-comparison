@@ -5,6 +5,7 @@ import Chart from "chart.js";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 let myChart;
+let totalPrice = 0;
 
 export class SidePanel extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ export class SidePanel extends Component {
   }
 
   componentDidUpdate = () => {
-    this.buildChart();
+    if (this.state.pricesData) {
+      this.calculatePrice(this.state.pricesData);
+    }
   };
 
   buildChart = () => {
@@ -111,6 +114,16 @@ export class SidePanel extends Component {
     });
   };
 
+  calculatePrice = (data) => {
+    totalPrice = 0;
+    data.forEach((dataset) => {
+      if (dataset.titel === "Competiors price") {
+        return;
+      }
+      totalPrice += dataset.price;
+    });
+  };
+
   render() {
     return (
       <div>
@@ -118,14 +131,17 @@ export class SidePanel extends Component {
           <div onClick={this.handleChartClick} className="chart-container">
             <canvas ref={this.chartRef} />
           </div>
+
+          <div className="price">€{totalPrice}</div>
           <button
+            className="update"
             onClick={() => {
-              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+              this.buildChart(this.state.chart);
+              this.calculatePrice(this.state.pricesData); // arrow fn so the fn isn't called on load
             }}
           >
-            Update
+            Update Chart
           </button>
-          <div className="price">€{this.state.totalPrice}</div>
           <a href="https://www.google.com" className="aanmelden-link">
             <button type="submit" className="submit">
               Aanmelden

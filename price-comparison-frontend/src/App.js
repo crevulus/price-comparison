@@ -126,12 +126,14 @@ class App extends Component {
                   </strong>
                 </p>
                 <ol>
-                  <li>
+                  <li className="welcome-list">
                     Choose your location and compare energy providers for your
                     base monthly costs
                   </li>
-                  <li>See what that would cost you elsewhere</li>
-                  <li>
+                  <li className="welcome-list">
+                    See what that would cost you elsewhere
+                  </li>
+                  <li className="welcome-list">
                     Add extra options to take full advantage of Change=
                     networked living
                   </li>
