@@ -5,7 +5,7 @@ import Chart from "chart.js";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 let myChart;
-let newTotalPrice = 0;
+let newTotalPrice;
 
 export class SidePanel extends Component {
   constructor(props) {
@@ -35,8 +35,6 @@ export class SidePanel extends Component {
   componentDidMount() {
     this.buildChart();
   }
-
-  componentDidUpdate = () => {};
 
   calculatePrice = (data) => {
     newTotalPrice = 0;
@@ -134,18 +132,31 @@ export class SidePanel extends Component {
             <canvas ref={this.chartRef} />
           </div>
 
-          <div className="price">€{this.state.totalPrice}</div>
-          <button
-            className="update"
-            onClick={() => {
-              this.buildChart(this.state.chart);
-              this.calculatePrice(this.state.pricesData); // arrow fn so the fn isn't called on load
-            }}
-            disabled={!this.state.pricesData}
+          <div className="price">Total: €{this.state.totalPrice}</div>
+          {this.state.totalPrice ? (
+            <button
+              className="update"
+              onClick={() => {
+                this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+              }}
+              disabled={!this.state.pricesData}
+            >
+              Update Chart
+            </button>
+          ) : (
+            <button
+              className="build"
+              onClick={() => {
+                this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+              }}
+            >
+              Build Chart
+            </button>
+          )}
+          <a
+            href="https://www.change-is.com/nl/register"
+            className="aanmelden-link"
           >
-            Update Chart
-          </button>
-          <a href="https://www.google.com" className="aanmelden-link">
             <button type="submit" className="submit">
               Aanmelden
               <ChevronRightIcon className="dropdown-submit-icon" />
