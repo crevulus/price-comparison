@@ -32,9 +32,18 @@ export default class ExplanationModal extends Component {
 
   render() {
     return (
-      <div className="cookie-modal">
-        <div>{this.state.pricesData.length}</div>
-        <button onClick={this.onClose}>Close</button>
+      <div className="modal">
+        <div>
+          <h3>Rent</h3>
+          <p>Rent is calculated by x.</p>
+          <h3>Water</h3>
+          <p>Water is calculated by y.</p>
+          <h3>Service Costs</h3>
+          <p>Service Costs are calculated by z.</p>
+        </div>
+        <button className="update" onClick={this.onClose}>
+          Close
+        </button>
       </div>
     );
   }

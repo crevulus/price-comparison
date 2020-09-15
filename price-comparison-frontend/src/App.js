@@ -20,6 +20,7 @@ class App extends Component {
     answerCodes: [],
     locationNamesData: "",
     pricesData: "",
+    totalPrice: 0,
     cookieModalShow: false,
     expModalShow: false,
   };
@@ -65,12 +66,15 @@ class App extends Component {
 
   handleAnswersUpdate = (codes) => {
     let newPricesData = [];
+    let newTotalPrice = 0;
     axios
       .post(`https://changey.uber.space/prices/${this.state.locationCode}`, {
         answer: codes,
       })
       .then((data) => {
-        data.data.forEach((item) => newPricesData.push(item));
+        data.data.forEach((item) => {
+          newPricesData.push(item);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -81,6 +85,7 @@ class App extends Component {
       } else {
         return {
           pricesData: newPricesData,
+          totalPrice: newTotalPrice,
         };
       }
     });

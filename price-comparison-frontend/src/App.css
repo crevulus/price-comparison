@@ -19,17 +19,19 @@ button {
 }
 
 /*modals styling*/
-.cookie-modal {
+.modal {
   position: fixed;
   z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-  background: white;
   border: 1px solid #ccc;
-  /* transition: 1.1s ease-out;
+  border-radius: 10px;
+  padding: 1rem;
+  background: white;
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+  /* transition: 1.1s ease-out;
   filter: blur(0);
   transform: scale(1);
   opacity: 1;
@@ -47,7 +49,7 @@ button {
   filter: blur(4px);
 }
 
-.cookie-modal.off {
+.modal.off {
   opacity: 0;
   visibility: hidden;
   filter: blur(8px);
@@ -275,6 +277,11 @@ button {
   box-shadow: 2px 2px 4px #cecece;
   color: white;
   transition-timing-function: all 1s ease;
+}
+
+.info-text {
+  color: #00a78d;
+  font-weight: 300;
 }
 
 @media (max-width: 1200px) {

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-cookie-consent": "^5.1.2",

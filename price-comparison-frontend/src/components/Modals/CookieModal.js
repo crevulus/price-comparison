@@ -8,7 +8,7 @@ export default class CookieModal extends Component {
 
   render() {
     return (
-      <div className="cookie-modal">
+      <div className="modal">
         <p>
           Unfortunately, users who do not accept cookies are unable to use this
           website.

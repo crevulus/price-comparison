@@ -5,7 +5,7 @@ import Chart from "chart.js";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 let myChart;
-let totalPrice = 0;
+let newTotalPrice = 0;
 
 export class SidePanel extends Component {
   constructor(props) {
@@ -34,12 +34,21 @@ export class SidePanel extends Component {
 
   componentDidMount() {
     this.buildChart();
-  }
-
-  componentDidUpdate = () => {
     if (this.state.pricesData) {
       this.calculatePrice(this.state.pricesData);
     }
+  }
+
+  componentDidUpdate = () => {};
+
+  calculatePrice = (data) => {
+    newTotalPrice = 0;
+    data.forEach((dataset) => {
+      if (dataset.titel === "Competiors price") {
+        return;
+      }
+      newTotalPrice += dataset.price;
+    });
   };
 
   buildChart = () => {
@@ -103,6 +112,8 @@ export class SidePanel extends Component {
             {
               stacked: true,
               ticks: {
+                beginAtZero: true,
+                display: false,
                 callback: function (value) {
                   return "€" + value;
                 },
@@ -114,16 +125,6 @@ export class SidePanel extends Component {
     });
   };
 
-  calculatePrice = (data) => {
-    totalPrice = 0;
-    data.forEach((dataset) => {
-      if (dataset.titel === "Competiors price") {
-        return;
-      }
-      totalPrice += dataset.price;
-    });
-  };
-
   render() {
     return (
       <div>
@@ -132,13 +133,14 @@ export class SidePanel extends Component {
             <canvas ref={this.chartRef} />
           </div>
 
-          <div className="price">€{totalPrice}</div>
+          <div className="price">€{newTotalPrice}</div>
           <button
             className="update"
             onClick={() => {
               this.buildChart(this.state.chart);
               this.calculatePrice(this.state.pricesData); // arrow fn so the fn isn't called on load
             }}
+            disabled={!this.state.pricesData}
           >
             Update Chart
           </button>

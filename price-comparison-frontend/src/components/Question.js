@@ -87,7 +87,9 @@ export class Question extends Component {
         <button onClick={this.toggleInfo} className="info">
           ?
         </button>
-        {this.state.infoModalShow ? <p>{this.props.text}</p> : null}
+        {this.state.infoModalShow ? (
+          <p className="info-text">{this.props.text}</p>
+        ) : null}
         <form onSubmit={this.handleFormSubmit}>{this.createCheckboxes()}</form>
       </div>
     );
