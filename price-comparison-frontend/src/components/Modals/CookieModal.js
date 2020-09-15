@@ -13,9 +13,11 @@ export default class CookieModal extends Component {
           Unfortunately, users who do not accept cookies are unable to use this
           website.
         </p>
-        <button onClick={this.onClose}>Accept</button>
+        <button className="submit" onClick={this.onClose}>
+          Accept
+        </button>
         <a href="https://www.google.com">
-          <button>Back</button>
+          <button className="update">Back</button>
         </a>
       </div>
     );

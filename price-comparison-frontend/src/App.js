@@ -4,7 +4,6 @@ import axios from "axios";
 import _ from "lodash";
 
 import "./App.css";
-import Chanti from "./assets/change-is-chanti.png";
 
 import Navbar from "./components/Navbar";
 import SidePanel from "./components/SidePanel";
@@ -143,9 +142,6 @@ class App extends Component {
                     networked living
                   </li>
                 </ol>
-              </div>
-              <div className="welcome-image">
-                <img src={Chanti} alt="Chanti" />
               </div>
             </div>
           </div>

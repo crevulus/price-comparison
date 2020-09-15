@@ -34,9 +34,6 @@ export class SidePanel extends Component {
 
   componentDidMount() {
     this.buildChart();
-    if (this.state.pricesData) {
-      this.calculatePrice(this.state.pricesData);
-    }
   }
 
   componentDidUpdate = () => {};
@@ -49,9 +46,13 @@ export class SidePanel extends Component {
       }
       newTotalPrice += dataset.price;
     });
+    this.setState({ totalPrice: newTotalPrice });
   };
 
   buildChart = () => {
+    if (this.state.pricesData) {
+      this.calculatePrice(this.state.pricesData);
+    }
     let datasets = [];
     if (this.state.pricesData) {
       this.state.pricesData.forEach((set) => {
@@ -133,7 +134,7 @@ export class SidePanel extends Component {
             <canvas ref={this.chartRef} />
           </div>
 
-          <div className="price">€{newTotalPrice}</div>
+          <div className="price">€{this.state.totalPrice}</div>
           <button
             className="update"
             onClick={() => {
