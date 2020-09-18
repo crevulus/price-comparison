@@ -132,14 +132,16 @@ class App extends Component {
                 <ol>
                   <li className="welcome-list">
                     Choose your location and compare energy providers for your
-                    base monthly costs
+                    base monthly costs. Build your chart to see a full breakdown
+                    of expenses.
                   </li>
                   <li className="welcome-list">
-                    See what that would cost you elsewhere
+                    Let us calculate the equivalent cost at the local cheapest
+                    competitor.
                   </li>
                   <li className="welcome-list">
-                    Add extra options to take full advantage of Change=
-                    networked living
+                    Add extra options and update your chart to take full
+                    advantage of Change= networked living.
                   </li>
                 </ol>
               </div>

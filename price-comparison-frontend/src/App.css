@@ -31,11 +31,6 @@ button {
   padding: 1rem;
   background: white;
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
-  /* transition: 1.1s ease-out;
-  filter: blur(0);
-  transform: scale(1);
-  opacity: 1;
-  visibility: visible; */
 }
 
 .modal-overlay {
@@ -61,6 +56,7 @@ button {
 .navbar-container {
   position: fixed;
   z-index: 10;
+  width: 100%;
 }
 
 .navbar-contents {
@@ -120,14 +116,14 @@ button {
 
 /* sidebar styling */
 .sidenav {
-  height: 50em;
+  padding-bottom: 1em;
   width: 21em;
   right: 0;
   border-radius: 5px 0 0 5px;
   background-color: white;
   box-shadow: -2px 0px 8px #a7a7a7;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  margin-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   float: right;
   position: fixed;
@@ -200,7 +196,7 @@ button {
 /* welcome banner */
 .background-rec {
   background-image: linear-gradient(#00a78d, #02ceaf6b);
-  height: 20rem;
+  height: 22rem;
   width: 100%;
 }
 
@@ -263,6 +259,11 @@ button {
   padding: 5px 0;
 }
 
+.answer-price {
+  margin: 0;
+  padding: 0;
+}
+
 .checkbox {
   margin-right: 7px;
 }
@@ -302,8 +303,30 @@ button {
   font-weight: 300;
 }
 
-/* @media (max-width: 1200px) {
-  .welcome-image {
-    display: none;
+@media (min-width: 1000px) {
+  .spacing-div-navbar-content {
+    height: 3rem;
   }
-} */
+}
+
+@media (max-width: 800px) {
+  .background-rec {
+    height: 28rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidenav {
+    display: block;
+    float: none;
+    position: relative;
+  }
+
+  .welcome-container {
+    width: 100%;
+  }
+
+  .questions-container {
+    width: 100%;
+  }
+}
