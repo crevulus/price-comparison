@@ -16,8 +16,8 @@ export default class CookieModal extends Component {
         <button className="submit" onClick={this.onClose}>
           Accept
         </button>
-        <a href="https://www.google.com">
-          <button className="update">Back</button>
+        <a href="https://www.change-is.com/">
+          <button className="update">Back to Home</button>
         </a>
       </div>
     );

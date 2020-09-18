@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
@@ -13,6 +13,7 @@ export default class Card extends Component {
       showMenu: false,
       locationDropdownText: "Select Location",
       locationCode: "",
+      goDisabled: false,
     };
 
     this.showMenu = this.showMenu.bind(this);
@@ -38,6 +39,9 @@ export default class Card extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onDropdownSubmit(this.state.locationCode);
+    if (this.state.locationCode) {
+      this.setState({ goDisabled: true });
+    }
   };
 
   render() {
@@ -66,7 +70,11 @@ export default class Card extends Component {
               </div>
             ) : null}
           </div>
-          <button type="submit" className="submit">
+          <button
+            disabled={this.state.goDisabled}
+            type="submit"
+            className="submit"
+          >
             Go
             <ChevronRightIcon className="dropdown-submit-icon" />
           </button>

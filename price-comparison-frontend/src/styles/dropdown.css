@@ -10,11 +10,19 @@
   color: #00a78d;
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #555;
-  box-shadow: 1px 1px 4px #cecece;
+  /* border: 1px solid #555;
+  box-shadow: 1px 1px 4px #cecece; */
+  border: 2px solid #00a78d;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 2px #555;
   border-radius: 2px;
   cursor: pointer;
   width: 15em;
+}
+
+.submit:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -42,6 +50,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size: 0.9rem;
 }
 
 /* Change color of dropdown links on hover */
