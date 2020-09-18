@@ -50,7 +50,11 @@ export default class Card extends Component {
         <div>Choose your location</div>
         <form onSubmit={this.handleSubmit} className="location-form">
           <div className="dropdown">
-            <button onClick={this.showMenu} className="dropdown-btn">
+            <button
+              disabled={this.state.goDisabled}
+              onClick={this.showMenu}
+              className="dropdown-btn"
+            >
               {this.state.locationDropdownText}
             </button>
             {this.state.showMenu ? (

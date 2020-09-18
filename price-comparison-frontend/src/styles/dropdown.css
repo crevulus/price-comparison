@@ -20,8 +20,17 @@
   width: 15em;
 }
 
+.dropdown-btn:disabled {
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
+  cursor: not-allowed;
+  color: white;
+  border: 2px solid rgb(172, 172, 172);
+}
+
 .submit:disabled {
-  background-color: #555;
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
   cursor: not-allowed;
 }
 
