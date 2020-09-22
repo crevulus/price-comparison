@@ -21,12 +21,12 @@ export default class ExplanationModal extends Component {
     }
   }
 
-  // to allow for async rendering
-  getSnapshotBeforeUpdate(prevProps) {
-    if (prevProps.pricesData !== this.state.pricesData) {
-      return this.state.pricesData;
-    }
-  }
+  // // to allow for async rendering
+  // getSnapshotBeforeUpdate(prevProps) {
+  //   if (prevProps.pricesData !== this.state.pricesData) {
+  //     return this.state.pricesData;
+  //   }
+  // }
 
   componentDidMount = () => {
     this.renderExp(this.state.pricesData);
@@ -47,7 +47,7 @@ export default class ExplanationModal extends Component {
   render() {
     return (
       <div className="modal">
-        <div>
+        <div className="exp-modal-text-container">
           {this.state.explanations.map((item) => (
             <span>
               <h4>{item.title}</h4>
@@ -55,7 +55,7 @@ export default class ExplanationModal extends Component {
             </span>
           ))}
         </div>
-        <button onClick={this.onClose} className="update">
+        <button onClick={this.onClose} className="sticky-btn update">
           Close
         </button>
       </div>

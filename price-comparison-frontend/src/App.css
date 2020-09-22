@@ -25,14 +25,21 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: auto;
   width: 500px;
+  overflow-y: auto;
   max-height: 80%;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 1rem;
   background: white;
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.sticky-btn {
+  float: right !important;
+  position: sticky;
+  bottom: 0;
+  right: 0;
 }
 
 .modal-overlay {
