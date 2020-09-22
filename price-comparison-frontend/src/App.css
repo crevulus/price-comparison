@@ -42,6 +42,16 @@ button {
   right: 0;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-container button {
+  padding-left: 6px !important;
+  margin: 0;
+}
+
 .modal-overlay {
   z-index: 1;
   position: fixed;
