@@ -33,7 +33,9 @@ export default class ExplanationModal extends Component {
 
   renderExp = (data) => {
     explanations = [];
-    data.forEach((set) => explanations.push(set.explenation));
+    data.forEach((set) =>
+      explanations.push({ title: set.titel, explanation: set.explenation })
+    );
   };
 
   onClose = () => {
@@ -43,7 +45,14 @@ export default class ExplanationModal extends Component {
   render() {
     return (
       <div className="modal">
-        <div>{explanations}</div>
+        <div>
+          {explanations.map((item) => (
+            <span>
+              <h4>{item.title}</h4>
+              <p>{item.explanation}</p>
+            </span>
+          ))}
+        </div>
         <button onClick={this.onClose} className="update">
           Close
         </button>
