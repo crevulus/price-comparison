@@ -113,9 +113,7 @@ class App extends Component {
           <Navbar />
           <div className="spacing-div-navbar-content" />
           <SidePanel
-            onClick={() =>
-              setTimeout(() => this.showModal("expModalShow"), 1000)
-            }
+            onClick={() => this.showModal("expModalShow")}
             answerCodes={this.state.answerCodes}
             pricesData={this.state.pricesData}
           />
