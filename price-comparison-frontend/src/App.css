@@ -86,7 +86,7 @@ button {
   height: 5rem;
   margin-top: -3px;
   margin-bottom: 10px;
-  box-shadow: 10px 0px 8px;
+  box-shadow: 1px 0px 8px;
 }
 
 .back-link {
@@ -135,17 +135,18 @@ button {
 
 /* sidebar styling */
 .sidenav {
+  float: right;
+  position: fixed;
   padding-bottom: 1em;
   width: 21em;
   right: 0;
+  top: 0;
+  margin-top: 160px; /* Place content 60px from the top */
   border-radius: 5px 0 0 5px;
   background-color: white;
   box-shadow: -2px 0px 8px #a7a7a7;
   overflow-x: hidden; /* Disable horizontal scroll */
-  margin-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-  float: right;
-  position: fixed;
 }
 
 .chart-container {
@@ -339,13 +340,32 @@ button {
     display: block;
     float: none;
     position: relative;
+    margin: 10px auto;
+    width: 90%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 8px #999;
+  }
+
+  .chart-container {
+    width: 95%;
+  }
+
+  .update {
+    margin-right: 0;
   }
 
   .welcome-container {
-    width: 100%;
+    padding: 5px;
+    max-width: 100%;
+    width: initial;
+  }
+
+  .welcome-text {
+    max-width: 100%;
   }
 
   .questions-container {
-    width: 100%;
+    width: initial;
+    max-width: 100%;
   }
 }

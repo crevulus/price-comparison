@@ -112,11 +112,6 @@ class App extends Component {
         >
           <Navbar />
           <div className="spacing-div-navbar-content" />
-          <SidePanel
-            onClick={() => this.showModal("expModalShow")}
-            answerCodes={this.state.answerCodes}
-            pricesData={this.state.pricesData}
-          />
 
           <div className="background-rec">
             <div className="welcome-container">
@@ -157,7 +152,11 @@ class App extends Component {
               locationCode={this.state.locationCode}
             />
           </div>
-
+          <SidePanel
+            onClick={() => this.showModal("expModalShow")}
+            answerCodes={this.state.answerCodes}
+            pricesData={this.state.pricesData}
+          />
           <CookieConsent
             style={{ alignItems: "center" }}
             enableDeclineButton

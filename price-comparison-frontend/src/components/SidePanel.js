@@ -126,43 +126,41 @@ export class SidePanel extends Component {
 
   render() {
     return (
-      <div>
-        <div className="sidenav">
-          <div onClick={this.handleChartClick} className="chart-container">
-            <canvas ref={this.chartRef} />
-          </div>
-
-          <div className="price">Total: €{this.state.totalPrice}</div>
-          {this.state.totalPrice ? (
-            <button
-              className="update"
-              onClick={() => {
-                this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
-              }}
-              disabled={!this.state.pricesData}
-            >
-              Update Chart
-            </button>
-          ) : (
-            <button
-              className="build"
-              onClick={() => {
-                this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
-              }}
-            >
-              Build Chart
-            </button>
-          )}
-          <a
-            href="https://www.change-is.com/nl/register"
-            className="aanmelden-link"
-          >
-            <button type="submit" className="submit">
-              Aanmelden
-              <ChevronRightIcon className="dropdown-submit-icon" />
-            </button>
-          </a>
+      <div className="sidenav">
+        <div onClick={this.handleChartClick} className="chart-container">
+          <canvas ref={this.chartRef} />
         </div>
+
+        <div className="price">Total: €{this.state.totalPrice}</div>
+        {this.state.totalPrice ? (
+          <button
+            className="update"
+            onClick={() => {
+              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+            }}
+            disabled={!this.state.pricesData}
+          >
+            Update Chart
+          </button>
+        ) : (
+          <button
+            className="build"
+            onClick={() => {
+              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+            }}
+          >
+            Build Chart
+          </button>
+        )}
+        <a
+          href="https://www.change-is.com/nl/register"
+          className="aanmelden-link"
+        >
+          <button type="submit" className="submit">
+            Aanmelden
+            <ChevronRightIcon className="dropdown-submit-icon" />
+          </button>
+        </a>
       </div>
     );
   }
