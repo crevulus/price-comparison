@@ -288,6 +288,45 @@ button {
   margin-right: 7px;
 }
 
+/* .back-link {
+  display: flex;
+  align-self: center;
+  margin: 0 1rem;
+} */
+
+.energy-block {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.energy-button {
+  display: grid;
+  grid-template-rows: 40% 30% 20% 10%;
+  justify-items: center;
+  background: none;
+  text-decoration: none;
+  max-width: 30%;
+  border: 2px solid #00a78d;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 2px #555;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+  color: #00a78d;
+}
+
+.energy-button h3 {
+  text-align: center;
+}
+
+.energy-img {
+  max-height: 50px;
+  max-width: 100px;
+}
+
+.energy-radio {
+  grid-row-start: 4;
+}
+
 .advanced-options {
   display: flex;
   width: 100%;

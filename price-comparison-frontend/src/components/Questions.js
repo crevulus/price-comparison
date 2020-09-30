@@ -58,27 +58,29 @@ export class Questions extends Component {
   };
 
   handleEnergyClick = (code) => {
+    console.log(code);
     this.setState({ answerCodes: [...this.state.answerCodes, code] });
-    const energyRegex = /en-/g;
-    if (this.state.answerCodes.length > 0) {
-      this.state.answerCodes.forEach((code) => {
-        const index = this.state.answerCodes.indexOf(code);
-        if (energyRegex.test(code)) {
-          let newAnswerCodes = this.state.answerCodes;
-          newAnswerCodes.splice(index, index, code);
-          this.setState({ answerCodes: newAnswerCodes });
-        }
+    const energyRegex = /ener-/gi;
+    let newAnswerCodes = this.state.answerCodes;
+    if (newAnswerCodes.length > 0) {
+      // newAnswerCodes.forEach((code) => {
+      //   if (energyRegex.test(code)) {
+      //     const index = newAnswerCodes.indexOf(code);
+      //     console.log(index);
+      //     newAnswerCodes.splice(index, index, code);
+      //     console.log(newAnswerCodes);
+      //   } else {
+      //     newAnswerCodes.push(code);
+      //   }
+      // });
+      const filtered = newAnswerCodes.filter((v, i, a) => {
+        console.log(v);
+        return !energyRegex.test(v);
       });
+      console.log(filtered);
+    } else {
+      // newAnswerCodes.push(code);
     }
-
-    // this.state.answerCodes.forEach((code, i) => {
-    //   if (energyRegex.test(code)) {
-    //     console.log(code);
-    //     let newAnswerCodes = this.state.answerCodes;
-    //     newAnswerCodes.splice(i, i, code);
-    //     this.setState({ answerCodes: newAnswerCodes });
-    //   }
-    // });
   };
 
   toggleAdvanced = (e) => {

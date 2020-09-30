@@ -14,16 +14,21 @@ export default class Energy extends Component {
         {
           if (options[provider].titel) {
             return (
-              <button
-                onClick={() => this.handleClick(options[provider].answerCode)}
-              >
+              <div className="energy-button">
                 <h3>{options[provider].titel}</h3>
                 <img
+                  className="energy-img"
                   src={options[provider].logo}
                   alt={options[provider].titel}
                 />
                 <p>{options[provider].price}</p>
-              </button>
+                <input
+                  type="radio"
+                  name="energyRadio"
+                  className="energy-radio"
+                  onClick={() => this.handleClick(options[provider].answerCode)}
+                />
+              </div>
             );
           }
         }
@@ -31,6 +36,6 @@ export default class Energy extends Component {
         console.log(error.name + ": " + error.message);
       }
     });
-    return <div className="question-block">{energyOptions}</div>;
+    return <form className="question-block energy-block">{energyOptions}</form>;
   }
 }
