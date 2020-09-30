@@ -16,7 +16,6 @@ export class Question extends Component {
       answerCodes: [],
       infoModalShow: false,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   createCheckboxes = () => this.props.answers.map(this.createCheckbox);

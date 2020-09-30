@@ -15,8 +15,6 @@ export class Questions extends Component {
       advancedText: "Advanced Options",
       showAdvanced: false,
     };
-
-    this.handleChildClick = this.handleChildClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -59,6 +57,30 @@ export class Questions extends Component {
     }
   };
 
+  handleEnergyClick = (code) => {
+    this.setState({ answerCodes: [...this.state.answerCodes, code] });
+    const energyRegex = /en-/g;
+    if (this.state.answerCodes.length > 0) {
+      this.state.answerCodes.forEach((code) => {
+        const index = this.state.answerCodes.indexOf(code);
+        if (energyRegex.test(code)) {
+          let newAnswerCodes = this.state.answerCodes;
+          newAnswerCodes.splice(index, index, code);
+          this.setState({ answerCodes: newAnswerCodes });
+        }
+      });
+    }
+
+    // this.state.answerCodes.forEach((code, i) => {
+    //   if (energyRegex.test(code)) {
+    //     console.log(code);
+    //     let newAnswerCodes = this.state.answerCodes;
+    //     newAnswerCodes.splice(i, i, code);
+    //     this.setState({ answerCodes: newAnswerCodes });
+    //   }
+    // });
+  };
+
   toggleAdvanced = (e) => {
     e.preventDefault();
     if (this.state.showAdvanced === true) {
@@ -88,7 +110,7 @@ export class Questions extends Component {
               });
               return (
                 <Question
-                  question={questions[set].question} // not sure why it works but I ain't questionin' it.
+                  question={questions[set].question}
                   answers={answers}
                   answerCodes={answerCodes}
                   explanation={questions[set].Text}
@@ -114,7 +136,7 @@ export class Questions extends Component {
                 });
                 return (
                   <Question
-                    question={questions[set].question} // not sure why it works but I ain't questionin' it.
+                    question={questions[set].question}
                     answers={answers}
                     answerCodes={answerCodes}
                     prices={questions[set].answers.map(
@@ -133,7 +155,12 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
-        {this.props.energyData && <Energy data={this.props.energyData} />}
+        {this.props.energyData && (
+          <Energy
+            data={this.props.energyData}
+            onChildClick={this.handleEnergyClick}
+          />
+        )}
         {this.state.showAdvanced ? (
           <button className="advanced-options" onClick={this.toggleAdvanced}>
             Hide Advanced Options
