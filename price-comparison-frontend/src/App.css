@@ -346,6 +346,11 @@ button {
     box-shadow: 1px 0px 8px #999;
   }
 
+  .modal {
+    max-height: 90%;
+    width: 90%;
+  }
+
   .chart-container {
     width: 95%;
   }

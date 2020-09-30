@@ -3,6 +3,7 @@ import Question from "./Question";
 import axios from "axios";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Energy from "./Energy";
 
 export class Questions extends Component {
   constructor(props) {
@@ -132,6 +133,7 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
+        {this.props.energyData && <Energy data={this.props.energyData} />}
         {this.state.showAdvanced ? (
           <button className="advanced-options" onClick={this.toggleAdvanced}>
             Hide Advanced Options

@@ -19,6 +19,7 @@ class App extends Component {
     answerCodes: [],
     locationNamesData: "",
     pricesData: "",
+    energyData: "",
     totalPrice: 0,
     cookieModalShow: false,
     expModalShow: false,
@@ -58,6 +59,12 @@ class App extends Component {
     axios
       .get(`https://changey.uber.space/prices/${code}`)
       .then((data) => this.setState({ pricesData: data.data }))
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(`https://changey.uber.space/energy/changeis/${code}`)
+      .then((data) => this.setState({ energyData: data.data }))
       .catch((error) => {
         console.log(error);
       });
@@ -150,6 +157,7 @@ class App extends Component {
             <Questions
               onChildUpdate={this.handleAnswersUpdate}
               locationCode={this.state.locationCode}
+              energyData={this.state.energyData}
             />
           </div>
           <SidePanel
