@@ -302,7 +302,6 @@ button {
 .energy-button {
   display: grid;
   grid-template-rows: 40% 30% 20% 10%;
-  justify-items: center;
   background: none;
   text-decoration: none;
   max-width: 30%;
@@ -316,6 +315,11 @@ button {
 
 .energy-button:hover {
   cursor: pointer;
+}
+
+.energy-button div {
+  display: grid;
+  justify-items: center;
 }
 
 .energy-button h3 {
