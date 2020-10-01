@@ -9,26 +9,32 @@ export default class Energy extends Component {
 
   render() {
     const options = this.props.data[0];
-    let energyOptions = Object.keys(options).map((provider) => {
+    let energyOptions = Object.keys(options).map((provider, i) => {
       try {
         {
           if (options[provider].titel) {
             return (
-              <div className="energy-button">
-                <h3>{options[provider].titel}</h3>
-                <img
-                  className="energy-img"
-                  src={options[provider].logo}
-                  alt={options[provider].titel}
-                />
-                <p>{options[provider].price}</p>
-                <input
-                  type="radio"
-                  name="energyRadio"
-                  className="energy-radio"
-                  onClick={() => this.handleClick(options[provider].answerCode)}
-                />
-              </div>
+              <label for={i} className="energy-button">
+                <div>
+                  <h3>{options[provider].titel}</h3>
+                  <img
+                    className="energy-img"
+                    src={options[provider].logo}
+                    alt={options[provider].titel}
+                  />
+                  <p>{options[provider].price}</p>
+                  <br />
+                  <input
+                    id={i}
+                    type="radio"
+                    name="energyRadio"
+                    className="energy-radio"
+                    onClick={() =>
+                      this.handleClick(options[provider].answerCode)
+                    }
+                  />
+                </div>
+              </label>
             );
           }
         }
