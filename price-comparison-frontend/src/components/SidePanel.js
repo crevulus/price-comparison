@@ -14,6 +14,7 @@ export class SidePanel extends Component {
       totalPrice: 0,
       pricesData: "",
       datasets: [],
+      hasError: false,
     };
     this.chartRef = React.createRef();
   }

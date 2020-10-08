@@ -12,6 +12,8 @@ import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
 import CookieModal from "./components/Modals/CookieModal";
 import ExplanationModal from "./components/Modals/ExplanationModal";
+import ErrorModal from "./components/Modals/ErrorModal";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -50,6 +52,10 @@ class App extends Component {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  componentDidCatch = () => {
+    this.setState({ hasError: true });
   };
 
   handleDropdownSubmit = (code) => {
@@ -100,91 +106,94 @@ class App extends Component {
   render() {
     let appContent = this.state.locationNamesData ? (
       <div className="App">
-        {this.state.cookieModalShow ? (
-          <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
-        ) : null}
-        {this.state.expModalShow && this.state.locatonCode !== null ? (
-          <ExplanationModal
-            pricesData={this.state.pricesData}
-            hideModal={() => this.hideModal("expModalShow")}
-          />
-        ) : null}
-        <div
-          className={
-            this.state.cookieModalShow ||
-            (this.state.expModalShow && this.state.locationCode !== null)
-              ? "modal-overlay"
-              : ""
-          }
-        >
-          <Navbar />
-          <div className="spacing-div-navbar-content" />
+        <ErrorBoundary>
+          {this.state.cookieModalShow ? (
+            <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
+          ) : null}
+          {this.state.expModalShow && this.state.locatonCode !== null ? (
+            <ExplanationModal
+              pricesData={this.state.pricesData}
+              hideModal={() => this.hideModal("expModalShow")}
+            />
+          ) : null}
+          <div
+            className={
+              this.state.cookieModalShow ||
+              this.state.hasError ||
+              (this.state.expModalShow && this.state.locationCode !== null)
+                ? "modal-overlay"
+                : ""
+            }
+          >
+            <Navbar />
+            <div className="spacing-div-navbar-content" />
 
-          <div className="background-rec">
-            <div className="welcome-container">
-              <div className="welcome-text">
-                <h2>Costs Calculator</h2>
-                <h4>Affordability</h4>
-                <div className="welcome-line"></div>
-                <p>
-                  <strong>
-                    Three simple steps to calculate your monthly expenses:
-                  </strong>
-                </p>
-                <ol>
-                  <li className="welcome-list">
-                    Choose your location and compare energy providers for your
-                    base monthly costs. Build your chart to see a full breakdown
-                    of expenses.
-                  </li>
-                  <li className="welcome-list">
-                    Let us calculate the equivalent cost at the local cheapest
-                    competitor.
-                  </li>
-                  <li className="welcome-list">
-                    Add extra options and update your chart to take full
-                    advantage of Change= networked living.
-                  </li>
-                </ol>
+            <div className="background-rec">
+              <div className="welcome-container">
+                <div className="welcome-text">
+                  <h2>Costs Calculator</h2>
+                  <h4>Affordability</h4>
+                  <div className="welcome-line"></div>
+                  <p>
+                    <strong>
+                      Three simple steps to calculate your monthly expenses:
+                    </strong>
+                  </p>
+                  <ol>
+                    <li className="welcome-list">
+                      Choose your location and compare energy providers for your
+                      base monthly costs. Build your chart to see a full
+                      breakdown of expenses.
+                    </li>
+                    <li className="welcome-list">
+                      Let us calculate the equivalent cost at the local cheapest
+                      competitor.
+                    </li>
+                    <li className="welcome-list">
+                      Add extra options and update your chart to take full
+                      advantage of Change= networked living.
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="questions-container">
-            <Dropdown
-              locationNames={this.state.locationNamesData}
-              onDropdownSubmit={this.handleDropdownSubmit}
+            <div className="questions-container">
+              <Dropdown
+                locationNames={this.state.locationNamesData}
+                onDropdownSubmit={this.handleDropdownSubmit}
+              />
+              <Questions
+                onChildUpdate={this.handleAnswersUpdate}
+                locationCode={this.state.locationCode}
+                energyData={this.state.energyData}
+              />
+            </div>
+            <SidePanel
+              onClick={() => this.showModal("expModalShow")}
+              answerCodes={this.state.answerCodes}
+              pricesData={this.state.pricesData}
             />
-            <Questions
-              onChildUpdate={this.handleAnswersUpdate}
-              locationCode={this.state.locationCode}
-              energyData={this.state.energyData}
-            />
+            <CookieConsent
+              style={{ alignItems: "center" }}
+              enableDeclineButton
+              onDecline={() => {
+                this.showModal("cookieModalShow");
+              }}
+              buttonText="Accept"
+              buttonStyle={{ backgroundColor: "#009785", color: "white" }}
+              declineButtonText="Reject"
+              declineButtonStyle={{
+                backgroundColor: "#FFC749",
+                color: "#000000",
+              }}
+              overlay
+            >
+              This website uses cookies to enhance user experience. Cookies will
+              be used for analytics, personalised content, and third-party
+              tracking.
+            </CookieConsent>
           </div>
-          <SidePanel
-            onClick={() => this.showModal("expModalShow")}
-            answerCodes={this.state.answerCodes}
-            pricesData={this.state.pricesData}
-          />
-          <CookieConsent
-            style={{ alignItems: "center" }}
-            enableDeclineButton
-            onDecline={() => {
-              this.showModal("cookieModalShow");
-            }}
-            buttonText="Accept"
-            buttonStyle={{ backgroundColor: "#009785", color: "white" }}
-            declineButtonText="Reject"
-            declineButtonStyle={{
-              backgroundColor: "#FFC749",
-              color: "#000000",
-            }}
-            overlay
-          >
-            This website uses cookies to enhance user experience. Cookies will
-            be used for analytics, personalised content, and third-party
-            tracking.
-          </CookieConsent>
-        </div>
+        </ErrorBoundary>
       </div>
     ) : (
       "Loading..."
