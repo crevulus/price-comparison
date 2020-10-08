@@ -300,15 +300,15 @@ button {
 }
 
 .energy-button {
-  display: grid;
-  grid-template-rows: 40% 30% 20% 10%;
   background: none;
   text-decoration: none;
-  max-width: 30%;
+  width: 30%;
+  min-width: 25%;
   border: 2px solid #00a78d;
   border-radius: 10px;
   box-shadow: 0.5px 0.5px 2px #555;
   padding: 0.3rem;
+  margin: 0.2rem;
   font-size: 1.1rem;
   color: #00a78d;
 }
@@ -319,16 +319,25 @@ button {
 
 .energy-button div {
   display: grid;
+  grid-template-rows: 10% 40% 30% 20%;
   justify-items: center;
+  align-items: center;
+  height: 90%;
 }
 
-.energy-button h3 {
+/* .energy-title {
   text-align: center;
-}
+  grid-row-start: 1;
+} */
 
 .energy-img {
   max-height: 50px;
   max-width: 100px;
+  grid-row-start: 2;
+}
+
+.energy-price {
+  grid-row-start: 3;
 }
 
 .energy-radio {
@@ -339,6 +348,7 @@ button {
   display: flex;
   width: 100%;
   padding: 5px 10px;
+  margin: 0 0 10px 0;
   justify-content: space-between;
   align-items: center;
   background: none;
@@ -350,6 +360,10 @@ button {
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.advanced-options:focus {
+  border: none;
 }
 
 .info {
@@ -419,5 +433,14 @@ button {
   .questions-container {
     width: initial;
     max-width: 100%;
+  }
+
+  .energy-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .energy-button {
+    width: 90%;
   }
 }

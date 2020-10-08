@@ -14,15 +14,15 @@ export default class Energy extends Component {
         {
           if (options[provider].titel) {
             return (
-              <label for={i} className="energy-button">
+              <label key={i} className="energy-button">
                 <div>
-                  <h3>{options[provider].titel}</h3>
                   <img
                     className="energy-img"
                     src={options[provider].logo}
                     alt={options[provider].titel}
+                    title={options[provider].titel}
                   />
-                  <p>{options[provider].price}</p>
+                  <p className="energy-price">€{options[provider].price}</p>
                   <br />
                   <input
                     id={i}

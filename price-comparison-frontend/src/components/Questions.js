@@ -146,12 +146,6 @@ export class Questions extends Component {
     return (
       <div>
         <div>{questionBlocks}</div>
-        {this.props.energyData && (
-          <Energy
-            data={this.props.energyData}
-            onChildClick={this.handleEnergyClick}
-          />
-        )}
         {this.state.showAdvanced ? (
           <button className="advanced-options" onClick={this.toggleAdvanced}>
             Hide Advanced Options
@@ -163,6 +157,12 @@ export class Questions extends Component {
             <ExpandMoreIcon />
           </button>
         ) : null}
+        {this.props.energyData && (
+          <Energy
+            data={this.props.energyData}
+            onChildClick={this.handleEnergyClick}
+          />
+        )}
       </div>
     );
   }
