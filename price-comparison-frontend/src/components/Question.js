@@ -89,7 +89,9 @@ export class Question extends Component {
         {this.state.infoModalShow ? (
           <p className="info-text">{this.props.text}</p>
         ) : null}
-        <form onSubmit={this.handleFormSubmit}>{this.createCheckboxes()}</form>
+        <form className="checkbox-form" onSubmit={this.handleFormSubmit}>
+          {this.createCheckboxes()}
+        </form>
       </div>
     );
   }

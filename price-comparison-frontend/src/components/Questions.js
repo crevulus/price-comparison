@@ -89,7 +89,7 @@ export class Questions extends Component {
     const questions = this.state.questions;
     let questionBlocks = this.state.questions
       ? this.state.showAdvanced
-        ? Object.keys(questions).map((set) => {
+        ? Object.keys(questions).map((set, i) => {
             const answers = [];
             const answerCodes = [];
             try {
@@ -108,13 +108,14 @@ export class Questions extends Component {
                   prices={questions[set].answers.map((answer) => answer.price)}
                   text={questions[set].Text}
                   onChildClick={this.handleChildClick}
+                  key={i}
                 />
               );
             } catch (error) {
               console.log(error.name + ": " + error.message);
             }
           })
-        : Object.keys(questions).map((set) => {
+        : Object.keys(questions).map((set, i) => {
             if (questions[set].advanced === false) {
               const answers = [];
               const answerCodes = [];
@@ -135,6 +136,7 @@ export class Questions extends Component {
                     )}
                     text={questions[set].Text}
                     onChildClick={this.handleChildClick}
+                    key={i}
                   />
                 );
               } catch (error) {

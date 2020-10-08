@@ -18,6 +18,11 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  border: none;
+  outline: none;
+}
+
 /*modals styling*/
 .modal {
   position: fixed;
@@ -272,6 +277,30 @@ button {
   padding: 5px;
 }
 
+/* solves indent problem on Safari */
+.checkbox-form {
+  padding-top: 3px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  float: right;
+  border: none;
+  background: none;
+  background-color: #00a78d;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #cecece;
+  color: white;
+  transition-timing-function: all 1s ease;
+}
+
+.info-text {
+  color: #00a78d;
+  text-shadow: none;
+  font-weight: 500;
+}
+
 .answer-row {
   display: flex;
   justify-content: space-between;
@@ -360,28 +389,6 @@ button {
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
-}
-
-.advanced-options:focus {
-  border: none;
-}
-
-.info {
-  display: flex;
-  align-items: center;
-  float: right;
-  border: none;
-  background: none;
-  background-color: #00a78d;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px #cecece;
-  color: white;
-  transition-timing-function: all 1s ease;
-}
-
-.info-text {
-  color: #00a78d;
-  font-weight: 300;
 }
 
 @media (min-width: 1000px) {

@@ -21,6 +21,11 @@
   max-width: 100%;
 }
 
+.dropdown-btn:focus {
+  border: 2px solid #00a78d;
+  outline: none;
+}
+
 .dropdown-btn:disabled {
   background-color: rgb(172, 172, 172);
   box-shadow: none;
