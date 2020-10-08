@@ -1,0 +1,46 @@
+{
+  "Rent": {
+    "question": "Choose your studio size",
+    "answers": [
+      {
+        "answer": "32sqm",
+        "url": "https://google.com",
+        "answerCode": "zo-rent-32"
+      },
+      {
+        "answer": "40sqm",
+        "answerCode": "zo-rent-40"
+      },
+      {
+        "answer": "45sqm",
+        "answerCode": "zo-rent-45"
+      }
+    ]
+  },
+  "TV": {
+    "question": "Add a TV subscription",
+    "answers": [
+      {
+        "answer": "30 Inch TV",
+        "answerCode": "tv-30"
+      },
+      {
+        "answer": "40 Inch TV",
+        "answerCode": "tv-40"
+      }
+    ]
+  },
+  "Wifi": {
+    "question": "Add a Wifi package",
+    "answers": [
+      {
+        "answer": "slow",
+        "answerCode": "slow-wifi"
+      },
+      {
+        "answer": "fast",
+        "answerCode": "fast-wifi"
+      }
+    ]
+  }
+}
