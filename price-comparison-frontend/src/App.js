@@ -14,6 +14,7 @@ import CookieModal from "./components/Modals/CookieModal";
 import ExplanationModal from "./components/Modals/ExplanationModal";
 import ErrorModal from "./components/Modals/ErrorModal";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
@@ -173,6 +174,7 @@ class App extends Component {
               answerCodes={this.state.answerCodes}
               pricesData={this.state.pricesData}
             />
+            <Footer />
             <CookieConsent
               style={{ alignItems: "center" }}
               enableDeclineButton

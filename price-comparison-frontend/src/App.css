@@ -391,6 +391,15 @@ button:focus {
   font-weight: 600;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #dbe9df;
+  text-align: center;
+  font-size: 14px;
+}
+
 @media (min-width: 1000px) {
   .spacing-div-navbar-content {
     height: 3rem;
@@ -449,5 +458,10 @@ button:focus {
 
   .energy-button {
     width: 90%;
+  }
+
+  .footer {
+    position: relative;
+    font-size: 12px;
   }
 }

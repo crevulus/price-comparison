@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../App.css";
 
 export default class ErrorModal extends Component {
-  onClose = () => {
+  onRefresh = () => {
     this.props.handleError();
   };
 
@@ -15,10 +15,10 @@ export default class ErrorModal extends Component {
         </h3>
         <p>
           If you continue to see this error warning, please contact
-          info@pro-evo.nl
+          info@pro-evo.nl.
         </p>
         <div className="btn-container">
-          <button className="submit" onClick={this.onClose}>
+          <button className="submit" onClick={this.onRefresh}>
             Refresh
           </button>
         </div>
