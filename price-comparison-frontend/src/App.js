@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import axios from "axios";
 import _ from "lodash";
@@ -12,7 +13,6 @@ import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
 import CookieModal from "./components/Modals/CookieModal";
 import ExplanationModal from "./components/Modals/ExplanationModal";
-import ErrorModal from "./components/Modals/ErrorModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
 
@@ -26,6 +26,7 @@ class App extends Component {
     totalPrice: 0,
     cookieModalShow: false,
     expModalShow: false,
+    errorMessage: "",
   };
 
   showModal = (modal) => {
@@ -51,7 +52,7 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        this.setState({ errorMessage: error.message });
       });
   };
 
@@ -67,13 +68,13 @@ class App extends Component {
       .get(`https://changey.uber.space/prices/${code}`)
       .then((data) => this.setState({ pricesData: data.data }))
       .catch((error) => {
-        console.log(error);
+        throw new Error(error.message);
       });
     axios
       .get(`https://changey.uber.space/energy/changeis/${code}`)
       .then((data) => this.setState({ energyData: data.data }))
       .catch((error) => {
-        console.log(error);
+        throw new Error(error.message);
       });
   };
 
@@ -90,7 +91,7 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        throw new Error(error.message);
       });
     this.setState((prevState) => {
       if (_.isEqual(prevState.pricesData, newPricesData)) {
@@ -197,6 +198,8 @@ class App extends Component {
           </div>
         </ErrorBoundary>
       </div>
+    ) : this.state.errorMessage ? (
+      <h3 className="error"> {this.state.errorMessage} </h3>
     ) : (
       "Loading..."
     );

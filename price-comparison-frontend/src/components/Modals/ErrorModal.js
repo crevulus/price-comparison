@@ -14,8 +14,8 @@ export default class ErrorModal extends Component {
           that one more time.
         </h3>
         <p>
-          If you continue to see this error warning, please contact
-          info@pro-evo.nl.
+          If you continue to see this error warning, please contact:
+          info@pro-evo.nl
         </p>
         <div className="btn-container">
           <button className="submit" onClick={this.onRefresh}>

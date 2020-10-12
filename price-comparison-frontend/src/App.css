@@ -395,6 +395,7 @@ button:focus {
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding: 3px 0;
   background-color: #dbe9df;
   text-align: center;
   font-size: 14px;
@@ -437,7 +438,7 @@ button:focus {
   }
 
   .welcome-container {
-    padding: 5px;
+    padding: 6px;
     max-width: 100%;
     width: initial;
   }
