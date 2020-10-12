@@ -15,7 +15,7 @@ export default class ErrorBoundary extends React.Component {
 
   handleErrorModal = () => {
     this.setState({
-      hasError: false, // need [] syntax to use param as prop in state
+      hasError: false,
     });
     window.location.reload();
   };

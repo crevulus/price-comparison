@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import axios from "axios";
 import _ from "lodash";
@@ -15,6 +14,7 @@ import CookieModal from "./components/Modals/CookieModal";
 import ExplanationModal from "./components/Modals/ExplanationModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
+import ErrorModal from "./components/Modals/ErrorModal";
 
 class App extends Component {
   state = {
@@ -27,6 +27,7 @@ class App extends Component {
     cookieModalShow: false,
     expModalShow: false,
     errorMessage: "",
+    hasError: false,
   };
 
   showModal = (modal) => {
@@ -68,13 +69,13 @@ class App extends Component {
       .get(`https://changey.uber.space/prices/${code}`)
       .then((data) => this.setState({ pricesData: data.data }))
       .catch((error) => {
-        throw new Error(error.message);
+        this.setState({ errorMessage: error.message });
       });
     axios
       .get(`https://changey.uber.space/energy/changeis/${code}`)
       .then((data) => this.setState({ energyData: data.data }))
       .catch((error) => {
-        throw new Error(error.message);
+        this.setState({ errorMessage: error.message });
       });
   };
 
@@ -91,7 +92,7 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        throw new Error(error.message);
+        this.setState({ errorMessage: error.message });
       });
     this.setState((prevState) => {
       if (_.isEqual(prevState.pricesData, newPricesData)) {
@@ -103,6 +104,13 @@ class App extends Component {
         };
       }
     });
+  };
+
+  handleErrorModal = () => {
+    this.setState({
+      hasError: false,
+    });
+    window.location.reload();
   };
 
   render() {
@@ -175,7 +183,6 @@ class App extends Component {
               answerCodes={this.state.answerCodes}
               pricesData={this.state.pricesData}
             />
-            <Footer />
             <CookieConsent
               style={{ alignItems: "center" }}
               enableDeclineButton
@@ -197,9 +204,13 @@ class App extends Component {
             </CookieConsent>
           </div>
         </ErrorBoundary>
+        <Footer />
       </div>
     ) : this.state.errorMessage ? (
-      <h3 className="error"> {this.state.errorMessage} </h3>
+      <h3>
+        {" "}
+        <ErrorModal handleError={this.handleErrorModal} />{" "}
+      </h3>
     ) : (
       "Loading..."
     );

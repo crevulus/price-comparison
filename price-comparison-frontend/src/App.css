@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  height: auto !important;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -326,6 +327,7 @@ button:focus {
 .energy-block {
   display: flex;
   justify-content: space-evenly;
+  margin: 20px 0;
 }
 
 .energy-button {
@@ -392,7 +394,7 @@ button:focus {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding: 3px 0;
@@ -455,6 +457,7 @@ button:focus {
   .energy-block {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .energy-button {
