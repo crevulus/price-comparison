@@ -116,6 +116,7 @@ class App extends Component {
     this.setState({
       hasError: false,
     });
+    console.log(Date.now() + ": " + navigator.userAgent);
     window.location.reload();
   };
 

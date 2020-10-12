@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import ErrorModal from "./Modals/ErrorModal";
 
-export default class ErrorBoundary extends React.Component {
+export default class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -17,6 +17,7 @@ export default class ErrorBoundary extends React.Component {
     this.setState({
       hasError: false,
     });
+    console.log(Date.now() + ": " + navigator.userAgent);
     window.location.reload();
   };
 
