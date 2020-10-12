@@ -16,6 +16,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
 import ErrorModal from "./components/Modals/ErrorModal";
 
+import RollbarErrorTracking from "./components/Rollbar";
+
 class App extends Component {
   state = {
     locationCode: null,
@@ -54,6 +56,7 @@ class App extends Component {
       })
       .catch((error) => {
         this.setState({ errorMessage: error.message });
+        RollbarErrorTracking.logErrorInRollbar(error);
       });
   };
 
@@ -70,12 +73,14 @@ class App extends Component {
       .then((data) => this.setState({ pricesData: data.data }))
       .catch((error) => {
         this.setState({ errorMessage: error.message });
+        RollbarErrorTracking.logErrorInRollbar(error);
       });
     axios
       .get(`https://changey.uber.space/energy/changeis/${code}`)
       .then((data) => this.setState({ energyData: data.data }))
       .catch((error) => {
         this.setState({ errorMessage: error.message });
+        RollbarErrorTracking.logErrorInRollbar(error);
       });
   };
 
@@ -93,6 +98,7 @@ class App extends Component {
       })
       .catch((error) => {
         this.setState({ errorMessage: error.message });
+        RollbarErrorTracking.logErrorInRollbar(error);
       });
     this.setState((prevState) => {
       if (_.isEqual(prevState.pricesData, newPricesData)) {

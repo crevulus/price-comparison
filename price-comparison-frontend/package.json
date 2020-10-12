@@ -15,7 +15,8 @@
     "react": "^16.13.1",
     "react-cookie-consent": "^5.1.2",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.3",
+    "rollbar": "^2.19.3"
   },
   "scripts": {
     "start": "react-scripts start",
