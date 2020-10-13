@@ -119,11 +119,28 @@ class App extends Component {
     window.location.reload();
   };
 
-  setGoogleCookie = () => {
+  setTrackingCookies = () => {
     Cookies.set("CookieConsent", "true");
     Cookies.set("CookieConsent-legacy", "true");
     ReactGA.initialize("UA-180490882-1");
     ReactGA.pageview(window.location.pathname + window.location.search);
+    this.hotjarTracking();
+  };
+
+  hotjarTracking = () => {
+    (function (h, o, t, j, a, r) {
+      h.hj =
+        h.hj ||
+        function () {
+          (h.hj.q = h.hj.q || []).push(arguments);
+        };
+      h._hjSettings = { hjid: 2038710, hjsv: 6 };
+      a = o.getElementsByTagName("head")[0];
+      r = o.createElement("script");
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
   };
 
   render() {
@@ -202,7 +219,7 @@ class App extends Component {
             <CookieConsent
               style={{ alignItems: "center" }}
               enableDeclineButton
-              onAccept={() => [this.setGoogleCookie()]}
+              onAccept={() => [this.setTrackingCookies()]}
               onDecline={() => {
                 this.showModal("cookieModalShow");
               }}
