@@ -3,6 +3,7 @@ import "../../App.css";
 
 export default class CookieModal extends Component {
   onClose = () => {
+    this.props.acceptGA();
     this.props.hideModal();
   };
 

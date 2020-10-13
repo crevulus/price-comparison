@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 
+import "./App.css";
+
 import axios from "axios";
 import _ from "lodash";
-import Cookies from "js-cookie";
-
-import "./App.css";
 
 import Navbar from "./components/Navbar";
 import SidePanel from "./components/SidePanel";
-// import CookieConsent from "react-cookie-consent";
 import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
-import CookieModal from "./components/Modals/CookieModal";
 import ExplanationModal from "./components/Modals/ExplanationModal";
-import ErrorBoundary from "./components/ErrorBoundary";
 import Footer from "./components/Footer";
-import ErrorModal from "./components/Modals/ErrorModal";
 
 import RollbarErrorTracking from "./components/Rollbar";
+import ErrorModal from "./components/Modals/ErrorModal";
+import ErrorBoundary from "./components/ErrorBoundary";
+
+import ReactGA from "react-ga";
+import Cookies from "js-cookie";
+import CookieConsent from "react-cookie-consent";
+import CookieModal from "./components/Modals/CookieModal";
 
 class App extends Component {
   state = {
@@ -31,18 +33,6 @@ class App extends Component {
     expModalShow: false,
     hasError: false,
     cookieConsent: Cookies.get("CookieConsent"),
-  };
-
-  showModal = (modal) => {
-    this.setState({
-      [modal]: true, // need [] syntax to use param as prop in state
-    });
-  };
-
-  hideModal = (modal) => {
-    this.setState({
-      [modal]: false, // need [] syntax to use param as prop in state
-    });
   };
 
   componentDidMount = () => {
@@ -62,6 +52,18 @@ class App extends Component {
 
   componentDidCatch = () => {
     this.setState({ hasError: true });
+  };
+
+  showModal = (modal) => {
+    this.setState({
+      [modal]: true, // need [] syntax to use param as prop in state
+    });
+  };
+
+  hideModal = (modal) => {
+    this.setState({
+      [modal]: false, // need [] syntax to use param as prop in state
+    });
   };
 
   handleDropdownSubmit = (code) => {
@@ -117,12 +119,22 @@ class App extends Component {
     window.location.reload();
   };
 
+  setGoogleCookie = () => {
+    Cookies.set("CookieConsent", "true");
+    Cookies.set("CookieConsent-legacy", "true");
+    ReactGA.initialize("UA-180490882-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  };
+
   render() {
     let appContent = this.state.locationNamesData ? (
       <div className="App">
         <ErrorBoundary>
           {this.state.cookieModalShow ? (
-            <CookieModal hideModal={() => this.hideModal("cookieModalShow")} />
+            <CookieModal
+              hideModal={() => this.hideModal("cookieModalShow")}
+              acceptGA={this.setGoogleCookie}
+            />
           ) : null}
           {this.state.expModalShow && this.state.locatonCode !== null ? (
             <ExplanationModal
@@ -187,9 +199,10 @@ class App extends Component {
               answerCodes={this.state.answerCodes}
               pricesData={this.state.pricesData}
             />
-            {/* <CookieConsent
+            <CookieConsent
               style={{ alignItems: "center" }}
               enableDeclineButton
+              onAccept={() => [this.setGoogleCookie()]}
               onDecline={() => {
                 this.showModal("cookieModalShow");
               }}
@@ -205,7 +218,7 @@ class App extends Component {
               This website uses cookies to enhance user experience. Cookies will
               be used for analytics, personalised content, and third-party
               tracking.
-            </CookieConsent> */}
+            </CookieConsent>
           </div>
         </ErrorBoundary>
         <Footer />
