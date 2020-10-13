@@ -10,7 +10,7 @@ export const RollbarErrorTracking = (() => {
     RollbarObj.info(info);
   };
   const logErrorInRollbar = (error) => {
-    throw new Error(error);
+    console.log("known post error on componentDidMount: " + error);
   };
   return { logErrorInfo, logErrorInRollbar };
 })();

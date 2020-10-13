@@ -2,12 +2,13 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import _ from "lodash";
+import Cookies from "js-cookie";
 
 import "./App.css";
 
 import Navbar from "./components/Navbar";
 import SidePanel from "./components/SidePanel";
-import CookieConsent from "react-cookie-consent";
+// import CookieConsent from "react-cookie-consent";
 import Questions from "./components/Questions";
 import Dropdown from "./components/Dropdown";
 import CookieModal from "./components/Modals/CookieModal";
@@ -28,8 +29,8 @@ class App extends Component {
     totalPrice: 0,
     cookieModalShow: false,
     expModalShow: false,
-    errorMessage: "",
     hasError: false,
+    cookieConsent: Cookies.get("CookieConsent"),
   };
 
   showModal = (modal) => {
@@ -55,7 +56,6 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        this.setState({ errorMessage: error.message });
         RollbarErrorTracking.logErrorInRollbar(error);
       });
   };
@@ -72,14 +72,12 @@ class App extends Component {
       .get(`https://changey.uber.space/prices/${code}`)
       .then((data) => this.setState({ pricesData: data.data }))
       .catch((error) => {
-        this.setState({ errorMessage: error.message });
         RollbarErrorTracking.logErrorInRollbar(error);
       });
     axios
       .get(`https://changey.uber.space/energy/changeis/${code}`)
       .then((data) => this.setState({ energyData: data.data }))
       .catch((error) => {
-        this.setState({ errorMessage: error.message });
         RollbarErrorTracking.logErrorInRollbar(error);
       });
   };
@@ -97,7 +95,6 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        this.setState({ errorMessage: error.message });
         RollbarErrorTracking.logErrorInRollbar(error);
       });
     this.setState((prevState) => {
@@ -190,7 +187,7 @@ class App extends Component {
               answerCodes={this.state.answerCodes}
               pricesData={this.state.pricesData}
             />
-            <CookieConsent
+            {/* <CookieConsent
               style={{ alignItems: "center" }}
               enableDeclineButton
               onDecline={() => {
@@ -208,7 +205,7 @@ class App extends Component {
               This website uses cookies to enhance user experience. Cookies will
               be used for analytics, personalised content, and third-party
               tracking.
-            </CookieConsent>
+            </CookieConsent> */}
           </div>
         </ErrorBoundary>
         <Footer />
