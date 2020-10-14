@@ -150,7 +150,7 @@ class App extends Component {
           {this.state.cookieModalShow ? (
             <CookieModal
               hideModal={() => this.hideModal("cookieModalShow")}
-              acceptGA={this.setGoogleCookie}
+              acceptCookies={this.setTrackingCookies}
             />
           ) : null}
           {this.state.expModalShow && this.state.locatonCode !== null ? (
