@@ -12,7 +12,7 @@ export default function Navbar() {
         <img className="verloop" src={verloop} alt="verloop" />
       </div>
       <div className="navbar-contents">
-        <a href="https://www.google.com" className="back-link">
+        <a href="https://www.change-is.com/" className="back-link">
           <button className="back-button">
             <ArrowBackIcon />
             <p className="back-text">Back</p>

@@ -149,6 +149,7 @@ export class SidePanel extends Component {
             onClick={() => {
               this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
             }}
+            disabled={!this.state.pricesData}
           >
             Build Chart
           </button>

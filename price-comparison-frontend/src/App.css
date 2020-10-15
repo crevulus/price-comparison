@@ -24,6 +24,10 @@ button:focus {
   outline: none;
 }
 
+a:visited {
+  color: inherit;
+}
+
 /*modals styling*/
 .modal {
   position: fixed;
@@ -182,6 +186,12 @@ button:focus {
   box-shadow: 2px 2px 4px #cecece;
   color: white;
   font-size: 1.1rem;
+}
+
+.build:disabled {
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .update {
@@ -429,6 +439,18 @@ button:focus {
   .modal {
     max-height: 90%;
     width: 90%;
+  }
+
+  .back-text {
+    display: none;
+  }
+
+  .back-button {
+    display: flex;
+    align-content: center;
+    padding: 0.1rem;
+    margin: auto;
+    border: 1px solid #00a78d;
   }
 
   .chart-container {
