@@ -173,6 +173,15 @@ a:visited {
   font-size: 2rem;
 }
 
+.click-here {
+  text-align: right;
+  width: calc(100%-1rem);
+  margin-top: 0;
+  padding-right: 1rem;
+  font-size: 14px;
+  color: #1485c8;
+}
+
 .build {
   display: flex;
   align-items: center;

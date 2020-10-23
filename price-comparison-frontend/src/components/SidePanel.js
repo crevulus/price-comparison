@@ -93,6 +93,15 @@ export class SidePanel extends Component {
         tooltips: {
           mode: "nearest",
           callbacks: {
+            label: function (tooltipItem, data) {
+              var label = data.datasets[tooltipItem.datasetIndex].label || "";
+
+              if (label) {
+                label += ": ";
+              }
+              label += tooltipItem.yLabel.toFixed(2);
+              return label;
+            },
             afterBody: (item, data) => {
               for (let i = 0; data.datasets.length > i; i++) {
                 if (item[0].datasetIndex === i) {
@@ -132,12 +141,17 @@ export class SidePanel extends Component {
           <canvas ref={this.chartRef} />
         </div>
 
-        <div className="price">Total: €{this.state.totalPrice}</div>
+        <div className="price">Total: €{this.state.totalPrice.toFixed(2)}</div>
+        {this.state.totalPrice ? (
+          <p className="click-here">
+            Click the chart to see full price details.
+          </p>
+        ) : null}
         {this.state.totalPrice ? (
           <button
             className="update"
             onClick={() => {
-              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+              this.buildChart(this.state.chart);
             }}
             disabled={!this.state.pricesData}
           >
@@ -147,11 +161,11 @@ export class SidePanel extends Component {
           <button
             className="build"
             onClick={() => {
-              this.buildChart(this.state.chart); // arrow fn so the fn isn't called on load
+              this.buildChart(this.state.chart);
             }}
             disabled={!this.state.pricesData}
           >
-            Build Chart
+            Calculate
           </button>
         )}
         <a
