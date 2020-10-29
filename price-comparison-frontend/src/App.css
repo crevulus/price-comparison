@@ -422,6 +422,13 @@ a:visited {
   font-size: 14px;
 }
 
+@media only screen and (max-height: 800px) and (min-width: 1000px) {
+  .sidenav {
+    margin-top: 30px;
+    z-index: 11;
+  }
+}
+
 @media (min-width: 1000px) {
   .spacing-div-navbar-content {
     height: 3rem;
