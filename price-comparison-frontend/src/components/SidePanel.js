@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Chart from "chart.js";
+import ReactGA from "react-ga";
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
@@ -134,6 +135,15 @@ export class SidePanel extends Component {
     });
   };
 
+  fireGoogleTag = () => {
+    ReactGA.event({
+      category: "Nav",
+      action: "Go to Reg",
+      label: "Aanmelden",
+    });
+    console.log("fired google tag");
+  };
+
   render() {
     return (
       <div className="sidenav">
@@ -171,6 +181,7 @@ export class SidePanel extends Component {
         <a
           href="https://www.change-is.com/nl/register"
           className="aanmelden-link"
+          onClick={this.fireGoogleTag}
         >
           <button type="submit" className="submit">
             Aanmelden

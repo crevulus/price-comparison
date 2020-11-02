@@ -427,6 +427,10 @@ a:visited {
     margin-top: 30px;
     z-index: 11;
   }
+
+  .chart-container {
+    height: 25rem;
+  }
 }
 
 @media (min-width: 1000px) {
