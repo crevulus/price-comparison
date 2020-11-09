@@ -135,13 +135,20 @@ export class SidePanel extends Component {
     });
   };
 
-  fireGoogleTag = () => {
+  fireGoogleTagAanmelden = () => {
     ReactGA.event({
       category: "Nav",
       action: "Go to Reg",
       label: "Aanmelden",
     });
-    console.log("fired google tag");
+  };
+
+  fireGoogleTagBuildUpdate = () => {
+    ReactGA.event({
+      category: "Interact",
+      action: "Build/Update",
+      label: "Build/Update",
+    });
   };
 
   render() {
@@ -160,8 +167,10 @@ export class SidePanel extends Component {
         {this.state.totalPrice ? (
           <button
             className="update"
+            id="build-update"
             onClick={() => {
               this.buildChart(this.state.chart);
+              this.fireGoogleTagBuildUpdate();
             }}
             disabled={!this.state.pricesData}
           >
@@ -170,8 +179,10 @@ export class SidePanel extends Component {
         ) : (
           <button
             className="build"
+            id="build-update"
             onClick={() => {
               this.buildChart(this.state.chart);
+              this.fireGoogleTagBuildUpdate();
             }}
             disabled={!this.state.pricesData}
           >
@@ -181,7 +192,7 @@ export class SidePanel extends Component {
         <a
           href="https://www.change-is.com/nl/register"
           className="aanmelden-link"
-          onClick={this.fireGoogleTag}
+          onClick={this.fireGoogleTagAanmelden}
         >
           <button type="submit" className="submit">
             Aanmelden
