@@ -11,7 +11,7 @@ export default class Card extends Component {
 
     this.state = {
       showMenu: false,
-      locationDropdownText: "Select Location",
+      locationDropdownText: "Selecteer locatie",
       locationCode: "",
       goDisabled: false,
     };
@@ -47,7 +47,7 @@ export default class Card extends Component {
   render() {
     return (
       <div className="question-block">
-        <div>Choose your location</div>
+        <div>Kies jouw locatie</div>
         <form onSubmit={this.handleSubmit} className="location-form">
           <div className="dropdown">
             <button
