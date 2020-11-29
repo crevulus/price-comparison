@@ -77,7 +77,7 @@ export class SidePanel extends Component {
     myChart = new Chart(this.chartRef.current, {
       type: "bar",
       data: {
-        labels: ["Change=", "Cheapest Competitor"],
+        labels: ["Change=", "Goedkoopste concurrent"],
         datasets: datasets,
       },
       options: {
@@ -87,7 +87,7 @@ export class SidePanel extends Component {
         title: {
           display: true,
           fontSize: 16,
-          text: "Your estimated monthly costs",
+          text: "De schatting van jouw maandelijkse kosten",
         },
         responsive: true,
         maintainAspectRatio: false,
@@ -186,7 +186,7 @@ export class SidePanel extends Component {
             }}
             disabled={!this.state.pricesData}
           >
-            Calculate
+            Bereken
           </button>
         )}
         <a

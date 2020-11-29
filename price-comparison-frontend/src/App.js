@@ -174,27 +174,29 @@ class App extends Component {
             <div className="background-rec">
               <div className="welcome-container">
                 <div className="welcome-text">
-                  <h2>Costs Calculator</h2>
-                  <h4>Affordability</h4>
+                  <h2>Kosten Berekenen</h2>
+                  <h4>Wat kan je je veroorloven?</h4>
                   <div className="welcome-line"></div>
                   <p>
                     <strong>
-                      Three simple steps to calculate your monthly expenses:
+                      Bereken je maandelijkse kosten met behulp van drie simpele
+                      stappen:
                     </strong>
                   </p>
                   <ol>
                     <li className="welcome-list">
-                      Choose your location and compare energy providers for your
-                      base monthly costs. Build your chart to see a full
-                      breakdown of expenses.
+                      Kies jouw voorkeurslocatie en vergelijk elektriciteit
+                      aanbieders om je maandelijkse vaste kosten te berekenen.
+                      Bouw vervolgens jouw persoonlijke tabel uit om de
+                      volledige kosten te berekenen.
                     </li>
                     <li className="welcome-list">
-                      Let us calculate the equivalent cost at the local cheapest
-                      competitor.
+                      Laat ons een vergelijking voor je opstellen bij de
+                      goedkoopste concurrent.
                     </li>
                     <li className="welcome-list">
-                      Add extra options and update your chart to take full
-                      advantage of Change= networked living.
+                      Voeg extra opties toe en update jouw tabel om volledig
+                      gebruik te maken van de Change= ervaring.
                     </li>
                   </ol>
                 </div>

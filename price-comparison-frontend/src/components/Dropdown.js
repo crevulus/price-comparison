@@ -79,7 +79,7 @@ export default class Card extends Component {
             type="submit"
             className="submit"
           >
-            Go
+            Start
             <ChevronRightIcon className="dropdown-submit-icon" />
           </button>
         </form>
