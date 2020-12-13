@@ -174,29 +174,19 @@ class App extends Component {
             <div className="background-rec">
               <div className="welcome-container">
                 <div className="welcome-text">
-                  <h2>Kosten Berekenen</h2>
-                  <h4>Wat kan je je veroorloven?</h4>
-                  <div className="welcome-line"></div>
+                  <h4>Wat kan je je per maand veroorloven?</h4>
+                  <h1>Bereken je kosten.</h1>
                   <p>
-                    <strong>
-                      Bereken je maandelijkse kosten met behulp van drie simpele
-                      stappen:
-                    </strong>
+                    Bereken je maandelijkse kosten met behulp van drie simpele
+                    stappen:
                   </p>
                   <ol>
+                    <li className="welcome-list">Kies jouw voorkeursopties.</li>
                     <li className="welcome-list">
-                      Kies jouw voorkeurslocatie en vergelijk elektriciteit
-                      aanbieders om je maandelijkse vaste kosten te berekenen.
-                      Bouw vervolgens jouw persoonlijke tabel uit om de
-                      volledige kosten te berekenen.
+                      Vergelijk bij de goedkoopste concurrent.
                     </li>
                     <li className="welcome-list">
-                      Laat ons een vergelijking voor je opstellen bij de
-                      goedkoopste concurrent.
-                    </li>
-                    <li className="welcome-list">
-                      Voeg extra opties toe en update jouw tabel om volledig
-                      gebruik te maken van de Change= ervaring.
+                      Voeg extra opties toe en update jouw tabel.
                     </li>
                   </ol>
                 </div>
