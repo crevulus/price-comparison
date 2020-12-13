@@ -90,53 +90,67 @@ a:visited {
 
 .navbar-contents {
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 10% auto 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: white;
   height: 5rem;
-  margin-top: -3px;
+  margin-top: -8px;
   margin-bottom: 10px;
+  padding: 0 1rem;
   box-shadow: 1px 0px 8px;
 }
 
-.back-link {
-  display: flex;
-  align-self: center;
-  margin: 0 1rem;
+.navbar-buttons {
+  width: auto;
+  text-decoration: underline;
 }
 
 .back-button {
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-right: 8px;
+  padding: 0.3rem 1rem;
   background: none;
   color: #00a78d;
-  text-decoration: underline;
   border: 2px solid #00a78d;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0.5px 0.5px 2px #555;
   font-size: 1.1rem;
+  font-weight: 1000;
 }
 
-.back-text {
-  align-self: center;
-  margin-block-start: 0;
-  margin-block-end: 0;
+.login-button {
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 3px;
+  padding: 0.3rem 1rem;
+  background-color: #e51759;
+  color: white;
+  border-radius: 7px;
+  box-shadow: 0.5px 0.5px 2px #555;
+  font-size: 1.1rem;
+  font-weight: 1000;
 }
 
 .verloop-container {
+  display: flex !important;
+  flex-direction: column;
   max-width: 100%;
   height: 1em;
   display: block;
 }
 
 .verloop {
-  height: 100%;
+  height: 50%;
   width: 100%;
 }
 
 .logo {
-  justify-self: center;
-  align-self: center;
-  max-height: 4rem;
-  max-width: 8rem;
+  height: 80px;
+  width: 100px;
 }
 
 .spacing-div-navbar-content {
@@ -459,18 +473,6 @@ a:visited {
   .modal {
     max-height: 90%;
     width: 90%;
-  }
-
-  .back-text {
-    display: none;
-  }
-
-  .back-button {
-    display: flex;
-    align-content: center;
-    padding: 0.1rem;
-    margin: auto;
-    border: 1px solid #00a78d;
   }
 
   .chart-container {
