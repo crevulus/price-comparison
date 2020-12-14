@@ -48,8 +48,8 @@ export default class ExplanationModal extends Component {
     return (
       <div className="modal">
         <div className="exp-modal-text-container">
-          {this.state.explanations.map((item) => (
-            <span>
+          {this.state.explanations.map((item, i) => (
+            <span key={i}>
               <h4>{item.title}</h4>
               <p>{item.explanation}</p>
             </span>

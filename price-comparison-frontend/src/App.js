@@ -174,7 +174,7 @@ class App extends Component {
             <div className="background-rec">
               <div className="welcome-container">
                 <div className="welcome-text">
-                  <h4>Wat kan je je per maand veroorloven?</h4>
+                  <h4 className="hook">Wat kan je je per maand veroorloven?</h4>
                   <h1>Bereken je kosten.</h1>
                   <p>
                     Bereken je maandelijkse kosten met behulp van drie simpele

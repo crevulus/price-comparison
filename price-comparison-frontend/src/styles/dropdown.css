@@ -19,6 +19,10 @@
   cursor: pointer;
   width: 15em;
   max-width: 100%;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 1000;
 }
 
 .dropdown-btn:focus {
@@ -32,6 +36,7 @@
   cursor: not-allowed;
   color: white;
   border: 2px solid rgb(172, 172, 172);
+  font-weight: 1000;
 }
 
 .submit:disabled {
@@ -67,6 +72,9 @@
   text-decoration: none;
   display: block;
   font-size: 0.9rem;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Change color of dropdown links on hover */

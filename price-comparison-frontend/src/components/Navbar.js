@@ -15,7 +15,7 @@ export default function Navbar() {
           <a href="https://www.change-is.com/" className="back-link">
             <button className="back-button">GO BACK</button>
           </a>
-          <button className="login-button" disabled={true}>
+          <button className="login-button" disabled>
             LOGIN
           </button>
         </div>

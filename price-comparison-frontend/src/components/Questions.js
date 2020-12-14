@@ -41,7 +41,7 @@ export class Questions extends Component {
         .then((data) => {
           this.setState(
             { questions: data.data[0], answerCodes: [], showAdvanced: false },
-            () => console.log(this.state.questions)
+            () => console.log("sent")
           );
         });
     }
