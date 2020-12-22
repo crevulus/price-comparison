@@ -553,7 +553,7 @@ a:visited {
     float: none;
     position: relative;
     margin: 10px auto;
-    width: 90%;
+    width: 90% !important;
     border-radius: 5px;
     box-shadow: 1px 0px 8px #999;
     z-index: 0;
