@@ -41,7 +41,7 @@ export class SidePanel extends Component {
   calculatePrice = (data) => {
     newTotalPrice = 0;
     data.forEach((dataset) => {
-      if (dataset.titel === "Competiors price") {
+      if (dataset.titel === "Competitor Price by Pro-Evo Technologies") {
         return;
       }
       newTotalPrice += dataset.price;
@@ -56,7 +56,7 @@ export class SidePanel extends Component {
     let datasets = [];
     if (this.state.pricesData) {
       this.state.pricesData.forEach((set) => {
-        if (set.titel === "Competiors price") {
+        if (set.titel === "Competitor Price by Pro-Evo Technologies") {
           let obj = {};
           obj.label = set.titel;
           obj.backgroundColor = set.color;

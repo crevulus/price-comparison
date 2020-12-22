@@ -150,8 +150,8 @@ a:visited {
 }
 
 .logo {
-  height: 80px;
-  width: 100px;
+  /* height: 80px; */
+  width: 140px;
 }
 
 .spacing-div-navbar-content {
@@ -164,7 +164,7 @@ a:visited {
   position: fixed;
   padding-bottom: 1em;
   z-index: 10;
-  width: 21em;
+  width: 24%;
   right: 0;
   top: 0;
   margin-top: 90px; /* Place content 60px from the top */
@@ -180,7 +180,7 @@ a:visited {
   position: relative;
   margin: auto;
   height: 30rem;
-  width: 20rem;
+  width: 90%;
 }
 
 .price {
@@ -286,7 +286,7 @@ a:visited {
   align-items: center;
   margin-top: 2rem;
   padding: 1rem 1rem 1rem 10%;
-  width: calc(100% - (23em + 10%));
+  width: calc(100% - (21rem + 10%));
   height: 100%;
   color: white;
   text-shadow: none;
@@ -307,8 +307,10 @@ a:visited {
 
 /* questions & answers */
 .questions-container {
-  padding: 1rem 1rem 1rem 10%;
-  width: calc(100% - (23em + 10%));
+  margin: auto;
+  margin-left: 12%;
+  padding: 1rem 1rem 1rem 3rem;
+  width: calc(100% - (21rem + 23%));
 }
 
 .question-block {
@@ -466,9 +468,27 @@ a:visited {
   .background-rec {
     background-size: cover;
   }
+
+  .chart-container {
+    width: 20em;
+  }
+
+  .questions-container {
+    margin: 0;
+    padding: 1rem 1rem 1rem 10%;
+    width: calc(100% - (23rem + 10%));
+  }
+
+  .sidenav {
+    width: 21em !important;
+  }
 }
 
 @media (min-width: 1000px) {
+  .chart-container {
+    max-width: 90%;
+  }
+
   .background-rec {
     margin-top: 0 !important;
   }
@@ -479,6 +499,12 @@ a:visited {
 }
 
 @media (max-width: 1000px) {
+  .questions-container {
+    margin: 0;
+    padding: 1rem;
+    width: calc(100% - (19rem + 10%));
+  }
+
   .navbar-contents {
     padding: 0 2%;
   }
@@ -489,18 +515,12 @@ a:visited {
 
   .welcome-container {
     margin-top: 0 !important;
-
     padding: 0 2%;
-    width: calc(100% - (23em));
+    width: calc(100% - (21rem));
   }
 
   .questions-container {
     padding: 2% 0 0 2%;
-    width: calc(100% - (23em));
-  }
-
-  .sidenav {
-    margin-top: 200px;
   }
 }
 
@@ -516,6 +536,18 @@ a:visited {
 }
 
 @media (max-width: 700px) {
+  .logo {
+    width: 110px;
+  }
+
+  .back-button {
+    padding: 0.3rem 0.3rem;
+  }
+
+  .login-button {
+    padding: 0.3rem 0.3rem;
+  }
+
   .sidenav {
     display: block;
     float: none;
@@ -524,6 +556,7 @@ a:visited {
     width: 90%;
     border-radius: 5px;
     box-shadow: 1px 0px 8px #999;
+    z-index: 0;
   }
 
   .background-rec {
@@ -533,10 +566,6 @@ a:visited {
   .modal {
     max-height: 90%;
     width: 90%;
-  }
-
-  .sidenav {
-    z-index: 0;
   }
 
   .chart-container {
