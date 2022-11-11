@@ -57,19 +57,6 @@ export class Question extends Component {
     }
   };
 
-  // selectAll = () => this.selectAllCheckboxes(true);
-
-  // selectAllCheckboxes = (isSelected) => {
-  //   Object.keys(this.state.checkboxes).forEach((checkbox) => {
-  //     this.setState((prevState) => ({
-  //       checkboxes: {
-  //         ...prevState.checkboxes,
-  //         [checkbox]: isSelected,
-  //       },
-  //     }));
-  //   });
-  // };
-
   handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
     Object.keys(this.state.checkboxes)

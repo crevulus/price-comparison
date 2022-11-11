@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import "../../App.css";
 
-// let explanations = [];
-
 export default class ExplanationModal extends Component {
   constructor(props) {
     super(props);
@@ -20,13 +18,6 @@ export default class ExplanationModal extends Component {
       return null;
     }
   }
-
-  // // to allow for async rendering
-  // getSnapshotBeforeUpdate(prevProps) {
-  //   if (prevProps.pricesData !== this.state.pricesData) {
-  //     return this.state.pricesData;
-  //   }
-  // }
 
   componentDidMount = () => {
     this.renderExp(this.state.pricesData);

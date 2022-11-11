@@ -56,13 +56,13 @@ class App extends Component {
 
   showModal = (modal) => {
     this.setState({
-      [modal]: true, // need [] syntax to use param as prop in state
+      [modal]: true,
     });
   };
 
   hideModal = (modal) => {
     this.setState({
-      [modal]: false, // need [] syntax to use param as prop in state
+      [modal]: false,
     });
   };
 

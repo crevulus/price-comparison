@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-// let code = "",
-
 export default class Energy extends Component {
   handleClick = (code) => {
     this.props.onChildClick(code);
